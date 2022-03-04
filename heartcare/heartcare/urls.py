@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('hospital.urls')),
     path('appointment/', include('appointment.urls')),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

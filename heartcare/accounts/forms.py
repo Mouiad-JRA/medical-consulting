@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 
+from captcha.fields import CaptchaField
+
 from accounts.models import User
 
 GENDER_CHOICES = (
@@ -10,6 +12,7 @@ GENDER_CHOICES = (
 
 
 class PatientRegistrationForm(UserCreationForm):
+    captcha = CaptchaField()
     # gender = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=GENDER_CHOICES)
 
     def __init__(self, *args, **kwargs):
@@ -61,7 +64,7 @@ class PatientRegistrationForm(UserCreationForm):
         )
         self.fields['age'].widget.attrs.update(
             {
-                'placeholder': 'Enter Phone Age',
+                'placeholder': 'Enter Age',
             }
         )
         self.fields['medical_history'].widget.attrs.update(
@@ -74,11 +77,16 @@ class PatientRegistrationForm(UserCreationForm):
                 'placeholder': 'Enter Your consultation text',
             }
         )
+        self.fields['captcha'].widget.attrs.update(
+            {
+                'placeholder': 'Enter The above captcha text',
+            }
+        )
 
     class Meta:
         model = User
 
-        fields = ['first_name', 'last_name', 'email', 'phone_number','age','medical_history','consultation_text', 'password1', 'password2', 'gender' ]
+        fields = ['first_name', 'last_name', 'email', 'phone_number','age','medical_history','consultation_text', 'password1', 'password2', 'gender', 'captcha' ]
         error_messages = {
             'first_name': {
                 'required': 'First name is required',
@@ -135,6 +143,7 @@ class PatientRegistrationForm(UserCreationForm):
 
 
 class DoctorRegistrationForm(UserCreationForm):
+    captcha = CaptchaField()
 
     def __init__(self, *args, **kwargs):
         super(DoctorRegistrationForm, self).__init__(*args, **kwargs)
@@ -170,10 +179,15 @@ class DoctorRegistrationForm(UserCreationForm):
                 'placeholder': 'Confirm Password',
             }
         )
+        self.fields['captcha'].widget.attrs.update(
+            {
+                'placeholder': 'Enter The above captcha text',
+            }
+        )
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'captcha']
         error_messages = {
             'first_name': {
                 'required': 'First name is required',

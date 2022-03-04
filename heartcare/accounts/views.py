@@ -28,6 +28,7 @@ class RegisterPatientView(CreateView):
 
         form = self.form_class(data=request.POST)
 
+
         if form.is_valid():
             user = form.save(commit=False)
             password = form.cleaned_data.get("password1")
