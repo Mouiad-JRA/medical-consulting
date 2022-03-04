@@ -52,6 +52,7 @@
 
 
                 <ul class="nav navbar-nav navbar-right">
+                    {% if not user.is_authenticated %}
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                     aria-haspopup="true" aria-expanded="false">Register <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
@@ -61,9 +62,15 @@
                 </li>
 
                     {#                <li><a class="appoint" href="{% url 'appointment:doctor-appointment-create' %}">Appointment</a></li>#}
-                    <li><a class="appoint" href="{% url 'accounts:login' %}"> login </a></li>
+                    <li><a class="appoint" href="{% url 'accounts:login' %}"> Login </a></li>
                     <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
-                                                                         alt=""></a></li>
+                                                                        alt=""></a></li>
+
+                {% else %}
+                                    <li><a class="appoint" href="{% url 'accounts:logout' %}"> Logout </a></li>
+                    <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
+                                                                        alt=""></a></li>
+                 {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
