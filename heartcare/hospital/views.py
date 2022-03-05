@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from hitcount.utils import get_hitcount_model
+
+from hitcount.views import HitCountDetailView
+
 from .models import Slider, Service, Doctor, Faq, Gallery
 from django.views.generic import ListView, DetailView, TemplateView
 
@@ -14,6 +18,9 @@ class HomeView(ListView):
         context = super().get_context_data()
         context['sliders'] = Slider.objects.all()
         context['experts'] = Doctor.objects.all()
+        context.update({
+            'services': Service.objects.order_by('-hit_count_generic__hits'),
+        })
         return context
 
 
@@ -21,14 +28,26 @@ class ServiceListView(ListView):
     queryset = Service.objects.all()
     template_name = "hospital/services.html"
 
+    def get_queryset(self):
+        return Service.objects.order_by('-hit_count_generic__hits')
 
-class ServiceDetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'services': Service.objects.order_by('-hit_count_generic__hits'),
+        })
+        print(context["services"])
+        return context
+
+
+class ServiceDetailView(HitCountDetailView):
     queryset = Service.objects.all()
+    count_hit = True
     template_name = "hospital/service_details.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["services"] = Service.objects.all()
+        context["services"] =Service.objects.order_by('-hit_count_generic__hits')
         return context
 
 

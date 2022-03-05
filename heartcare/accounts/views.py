@@ -2,6 +2,9 @@ from django.contrib import messages, auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, FormView, RedirectView
+
+
+
 from accounts.forms import *
 from accounts.models import User
 
@@ -30,6 +33,7 @@ class RegisterPatientView(CreateView):
 
 
         if form.is_valid():
+
             user = form.save(commit=False)
             password = form.cleaned_data.get("password1")
             user.set_password(password)

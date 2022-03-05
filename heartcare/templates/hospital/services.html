@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static hitcount_tags %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
@@ -35,6 +36,7 @@
                       class="fa fa-heartbeat" aria-hidden="true"></i></a>
                   <img src="{{ service.thumbnail.url }}" alt=""></div>
                 <div class="ser-content">
+                     {% get_hit_count for service %}
                   <h3><a href="{% url 'service_details' service.id %}">{{ service.title }}</a></h3>
                   <p>{{ service.description|truncatewords:15 }}</p>
                 </div>

@@ -1,4 +1,6 @@
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
+
 from . import views
 
 urlpatterns = [
@@ -11,5 +13,7 @@ urlpatterns = [
          name="doctor_details"),
     path('faqs/', views.FaqListView.as_view(), name="faqs"),
     path('gallery/', views.GalleryListView.as_view(), name="gallery"),
-    path('contact/', views.ContactView.as_view(), name="contact")
+    path('contact/', views.ContactView.as_view(), name="contact"),
+    path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
+
 ]

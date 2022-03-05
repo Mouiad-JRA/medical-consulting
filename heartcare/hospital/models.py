@@ -1,5 +1,6 @@
 from django.db import models
-
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 
 class Slider(models.Model):
     caption = models.CharField(max_length=150)
@@ -21,6 +22,11 @@ class Service(models.Model):
     cover = models.ImageField(upload_to='services/')
     image1 = models.ImageField(upload_to='services/', blank=True, null=True)
     image2 = models.ImageField(upload_to='services/', blank=True, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
 
     def __str__(self):
         return self.title
