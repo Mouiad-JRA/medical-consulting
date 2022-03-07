@@ -13,7 +13,6 @@ urlpatterns = [
     path('', include('hospital.urls')),
     path('appointment/', include('appointment.urls')),
     path('captcha/', include('captcha.urls')),
-    path("1/", TemplateView.as_view(template_name="hospital/slider.html"), name="slider"),
 ]
 
 if settings.DEBUG:

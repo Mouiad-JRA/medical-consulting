@@ -38,7 +38,7 @@ class ConsultationForm(forms.ModelForm):
             }
         }
 
-        # exclude = ['created_date']
+        exclude = ('reply',)
 
         def clean_medical_history(self):
             medical_history = self.cleaned_data.get('medical_history')

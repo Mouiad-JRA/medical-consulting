@@ -31,6 +31,10 @@ class Service(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = ("medical topics")
+        verbose_name_plural = ("medical topics")
+
 
 class Item(models.Model):
     title = title = models.CharField(max_length=120)

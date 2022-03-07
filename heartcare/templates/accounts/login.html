@@ -43,20 +43,19 @@
               <ul class="nav navbar-nav">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 </li>
-                <li><a href="{% url 'services' %}">Services</a></li>
-                <li><a href="{% url 'doctors' %}">Doctors</a></li>
-                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
+                <li><a href="{% url 'services' %}">medical topics</a></li>
+{#                <li><a href="{% url 'doctors' %}">Doctors</a></li>#}
+
+                    {% if not user.is_authenticated %}
+                    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-haspopup="true" aria-expanded="false">Register <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'faqs' %}">Faqs</a></li>
+                    <li><a href="{% url 'accounts:doctor-register' %}">DOCTOR</a></li>
+                    <li><a href="{% url 'accounts:patient-register' %}">PATIENT</a></li>
                   </ul>
                 </li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-              </ul>
+                      {% endif %}
 
-
-                    {#                <li><a class="appoint" href="{% url 'appointment:doctor-appointment-create' %}">Appointment</a></li>#}
 
                     <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
                                                                          alt=""></a></li>

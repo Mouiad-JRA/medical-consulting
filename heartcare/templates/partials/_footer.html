@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Our Services</h3>
+            <h3>Our medical topics</h3>
             <ul>
               {% for service in services|slice:':8' %}
               <li><a href="{% url 'service_details' service.id %}"><i class="fa fa-arrow-right"></i>
@@ -23,12 +23,12 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Expert Doctors</h3>
+            <h3></h3>
             <ul>
-              {% for doctor in doctors|slice:':8' %}
-              <li><a href="{% url 'doctor_details' doctor.id %}"><i class="fa fa-arrow-right"></i> {{ doctor.name }}</a>
+{#              {% for doctor in doctors|slice:':8' %}#}
+              <li><i></i> </a>
               </li>
-              {% endfor %}
+{#              {% endfor %}#}
             </ul>
           </div>
         </div>
@@ -44,7 +44,7 @@
                 <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span> <span
                     class="add-text"><strong>For Inquiry:</strong>mouiad.ali.work@gmail.com</span> </li>
                 <li> <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Our Timings:</strong> Mon-Sat: 9:00am-7:00pm</span> </li>
+                    class="add-text"><strong>Our Timings:</strong> San-Fri: 8:00am-2:00pm</span> </li>
               </ul>
             </address>
           </div>

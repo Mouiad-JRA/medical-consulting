@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static bootstrap%}
+{% block maincontent %}
+<!--inner banner-->
+<div class="inner-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Consultations</h1>
+      </div>
+      <div class="col-md-5">
+        <ol class="breadcrumb">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li class="active">Ask for Consultations</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!--inner banner End-->
+
+<!--Main Content Start-->
+<div class="main-content">
+  <div class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+
+          <form action="{% url 'consultation' %}" method="post">
+            {% csrf_token %}
+              {{ form|bootstrap }}
+
+                     <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit" class="btn btn-primary btn-md text-white">
+                            </div>
+                        </div>
+          </form>
+
+        </div>
+        <div class="col-md-5">
+          <div class="contact-address">
+            <h5>Contact Information:</h5>
+            <ul>
+              <li> <span class="icon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span> <span
+                  class="add-text">Syria Latakia<br>
+                  Tishreen Hospital<br>
+                  SRYIA</span> </li>
+              <li> <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i> </span> <span class="add-text">+963994350933<br>
+                  +963994350933</span> </li>
+              <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i> </span> <span
+                  class="add-text"><strong>For Inquiry:</strong> mouiad.ali.work@gmail.com</span> </li>
+              <li> <span class="icon"><i class="fa fa-globe" aria-hidden="true"></i> </span> <span
+                  class="add-text"><strong>For Details:</strong> www.Heartcare.com</span> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Main Content End-->
+{% endblock maincontent %}
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-toastr-2/dist/vue-toastr-2.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/vue-toastr-2/dist/vue-toastr-2.min.css">
+<script> Vue.$toast.success("Thanx", {
+                      position: 'top-right',
+                      duration: 3000
+                    })
+                    setTimeout(() => window.location.href = {% url "accounts:login" %}, 1000)</script>

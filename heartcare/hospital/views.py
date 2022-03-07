@@ -1,12 +1,16 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.urls import reverse_lazy, reverse
 from hitcount.utils import get_hitcount_model
 
 from hitcount.views import HitCountDetailView
 
 from .models import Slider, Service, Doctor, Faq, Gallery
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView, TemplateView, CreateView
+
+from accounts.forms import ConsultationForm
 
 
 class HomeView(ListView):
@@ -47,7 +51,7 @@ class ServiceDetailView(HitCountDetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["services"] =Service.objects.order_by('-hit_count_generic__hits')
+        context["services"] = Service.objects.order_by('-hit_count_generic__hits')
         return context
 
 
@@ -89,16 +93,33 @@ class ContactView(TemplateView):
         message = request.POST.get('message')
 
         if subject == '':
-            subject = "Heartcare Contact"
+            subject = "Healthcare Contact"
 
         if name and message and email and phone:
             send_mail(
-                subject+"-"+phone,
+                subject + "-" + phone,
                 message,
                 email,
-                ['expelmahmud@gmail.com'],
+                ['kncareerskwait@gmail.com'],
                 fail_silently=False,
             )
-            messages.success(request, " Email hasbeen sent successfully...")
+            messages.success(request, " Email has been sent successfully...")
 
         return redirect('contact')
+
+
+class consultationView(CreateView):
+    form_class = ConsultationForm
+    template_name = "hospital/consultation.html"
+
+    extra_context = {
+        'title': 'Add consultation'
+    }
+
+    # def dispatch(self, request, *args, **kwargs):
+    #     if self.request.user.is_authenticated:
+    #         return HttpResponseRedirect(self.get_success_url())
+    #     return super().dispatch(self.request, *args, **kwargs)
+    #
+    def get_success_url(self):
+        return reverse('accounts:login')
