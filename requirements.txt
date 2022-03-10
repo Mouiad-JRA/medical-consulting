@@ -1,5 +1,5 @@
 Django==4.0.2
-Pillow==6.0.0
+Pillow
 django-bootstrap-form==3.4
 django-simple-captcha==0.5.14
 six==1.16.0
