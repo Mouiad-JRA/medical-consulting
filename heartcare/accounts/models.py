@@ -13,6 +13,7 @@ GENDER_CHOICES = (
 
 
 class Consultation(models.Model):
+    verbose_name = _('Consultation')
     ANSWERED = "answered"
     ONHOLD = "hold"
 
@@ -55,6 +56,7 @@ class Consultation(models.Model):
 
 
 class User(AbstractUser):
+
     username = None
     role = models.CharField(_('role'),max_length=12, error_messages={
         'required': "Role must be provided"

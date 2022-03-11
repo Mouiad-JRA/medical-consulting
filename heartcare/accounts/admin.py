@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.conf.urls import url
 from django.urls import reverse
-
+from django.utils.translation import gettext_lazy as _
 from .models import User, Consultation
 from django.utils.html import format_html
 admin.site.register(User)
@@ -11,6 +11,7 @@ admin.site.register(User)
 # Register your models here.
 class ConsultationAdmin(admin.ModelAdmin):
     model = Consultation
+    verbose_name = _('Consultation')
     date_hierarchy = "created_date"
     list_display = (
         "medical_history",

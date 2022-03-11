@@ -1,6 +1,7 @@
 from django.db import models
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.contenttypes.fields import GenericRelation
+from django.utils.translation import gettext_lazy as _
 
 class Slider(models.Model):
     caption = models.CharField(max_length=150)
@@ -11,7 +12,8 @@ class Slider(models.Model):
         return self.caption[:20]
 
     class Meta:
-        verbose_name_plural = 'Slider'
+        verbose_name = _('Slider')
+        verbose_name_plural = _('Sliders')
 
 
 class Service(models.Model):
@@ -32,8 +34,8 @@ class Service(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = ("medical topics")
-        verbose_name_plural = ("medical topics")
+        verbose_name = _("medical topics")
+        verbose_name_plural = _("medical topics")
 
 
 class Item(models.Model):
@@ -41,6 +43,10 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = _("Item")
+        verbose_name_plural = _("Items")
 
 
 class Doctor(models.Model):
@@ -59,6 +65,7 @@ class Doctor(models.Model):
 
 
 class Expertize(models.Model):
+
     name = models.CharField(max_length=120)
 
     def __str__(self):
@@ -72,6 +79,10 @@ class Faq(models.Model):
     def __str__(self):
         return self.question
 
+    class Meta:
+        verbose_name = _("Faq")
+        verbose_name_plural = _("Faqs")
+
 
 class Gallery(models.Model):
     title = models.CharField(max_length=120)
@@ -81,4 +92,5 @@ class Gallery(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = "Galleries"
+        verbose_name = _("Gallery")
+        verbose_name_plural = _("Galleries")
