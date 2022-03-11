@@ -1,18 +1,16 @@
-{% load static %}
+{% load static i18n %}
 <footer class="footer">
   <div class="footer-widgets">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <div class="widget"> <img class="ft-logo" src="{% static 'heartcare/images/footer-logo.png' %}" alt="">
-            <p>The Heart Care Heart Hospital have latest technology machines with experty Heart specialist doctors
-              consectetur adipisicing elit. Distinctio vitae maiores enim ea atque? Natus iure autem cumque, quaerat
-              distinctio pariatur velit illo hic a eos paccusamus. </p>
+            <p>{% trans "The Heart Care Heart Hospital have latest technology machines with experty Heart specialist doctors consectetur adipisicing elit. Distinctio vitae maiores enim ea atque? Natus iure autem cumque, quaerat distinctio pariatur velit illo hic a eos paccusamus." %} </p>
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Our medical topics</h3>
+            <h3>{% trans "Our medical topic" %}</h3>
             <ul>
               {% for service in services|slice:':8' %}
               <li><a href="{% url 'service_details' service.id %}"><i class="fa fa-arrow-right"></i>
@@ -34,17 +32,17 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="widget">
-            <h3>Contact us</h3>
+            <h3>{% trans "Contact us" %}</h3>
             <address>
               <ul>
                 <li> <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Main Branch:</strong>Syria Latakia</span> </li>
+                    class="add-text"><strong>{% trans "Main Branch:" %}</strong>{% trans "Syria Latakia" %}</span> </li>
                 <li> <span class="icon"><i class="fa fa-phone-square" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Call us Anytime at:</strong> +963994350933</span> </li>
+                    class="add-text"><strong>{% trans "Call us Anytime at:" %}</strong> +963994350933</span> </li>
                 <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>For Inquiry:</strong>mouiad.ali.work@gmail.com</span> </li>
+                    class="add-text"><strong>{% trans "For Inquiry:" %}</strong>mouiad.ali.work@gmail.com</span> </li>
                 <li> <span class="icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> <span
-                    class="add-text"><strong>Our Timings:</strong> San-Fri: 8:00am-2:00pm</span> </li>
+                    class="add-text"><strong>{% trans "Our Timings:" %}</strong> {% trans "San-Fri: 8:00am-2:00pm" %}</span> </li>
               </ul>
             </address>
           </div>
@@ -63,7 +61,7 @@
           </div>
         </div>
         <div class="col-md-6">
-          <p><strong>HeartCare</strong> © {% now 'Y' %}, All Rights Reserved & Developed By Mouiad Ali</p>
+          <p><strong>{% trans "HeartCare" %}</strong> © {% now 'Y' %}, {% trans "All Rights Reserved & Developed By Mouiad Ali, Mazen Souda, Milad Awad and Abdullah Ghazel" %}</p>
         </div>
       </div>
     </div>

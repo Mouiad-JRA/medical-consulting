@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Gallery</h1>
+        <h1>{% trans "Gallery" %}</h1>
       </div>
       <div class="col-md-5">
         <ol class="breadcrumb">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li class="active">Gallery Small</li>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          <li class="active">{% trans "Gallery Small" %}</li>
         </ol>
       </div>
     </div>

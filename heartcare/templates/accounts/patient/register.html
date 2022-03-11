@@ -1,7 +1,7 @@
-{% load static bootstrap%}
+{% load static bootstrap i18n%}
 
 <head class="back">
-<title>{% block title %}Patient registration{% endblock %}</title>
+<title>{% block title %}{% trans 'Patient registration' %}{% endblock %}</title>
   {% include 'partials/_css.html' %}
   {% include 'partials/_js.html' %}
 
@@ -11,8 +11,8 @@
       <div class="row">
         <div class="col-md-6 col-sm-8">
           <ul>
-            <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+963994350933</strong></li>
-            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email us: <strong>mouiad.ali.work@gmail.com</strong>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> {% trans 'Call at:' %} <strong>+963994350933</strong></li>
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {% trans 'Email us:' %}<strong>mouiad.ali.work@gmail.com</strong>
             </li>
           </ul>
         </div>
@@ -39,18 +39,18 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
                 </li>
-                <li><a href="{% url 'services' %}">Medical topics</a></li>
+                <li><a href="{% url 'services' %}">{% trans 'Medical topics' %}</a></li>
 {#                <li><a href="{% url 'doctors' %}">Doctors</a></li>#}
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
+                    aria-haspopup="true" aria-expanded="false">{% trans 'Features' %} <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'faqs' %}">Faqs</a></li>
+                    <li><a href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
+                    <li><a href="{% url 'faqs' %}">{% trans 'Faqs' %}</a></li>
                   </ul>
                 </li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
               </ul>
 
 
@@ -90,7 +90,7 @@
 <div class="row justify-content-center">
 
                 <div class="col-lg-5 mb-5 mb-lg-0">
-                    <center> <h3>Patient Registration</h3></center>
+                    <center> <h3>{% trans 'Registration for patient' %}</h3></center>
 
                     <form action="" method="POST">{% csrf_token %}
 {#                        {% for field in form %}#}

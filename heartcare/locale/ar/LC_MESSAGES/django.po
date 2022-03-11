@@ -1,0 +1,616 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-11 18:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: accounts/forms.py:14 accounts/forms.py:82
+msgid "consultation text"
+msgstr "نص الاستشارة"
+
+#: accounts/forms.py:15 accounts/forms.py:83
+msgid "medical history"
+msgstr "التاريخ الطبي"
+
+#: accounts/forms.py:74 accounts/forms.py:193
+msgid "First Name"
+msgstr "الاسم الاول"
+
+#: accounts/forms.py:75 accounts/forms.py:194
+msgid "Last Name"
+msgstr "الاسم الاخير"
+
+#: accounts/forms.py:76 accounts/forms.py:264 accounts/models.py:63
+msgid "Email"
+msgstr "الإيميل"
+
+#: accounts/forms.py:77 accounts/models.py:67
+msgid "age"
+msgstr "العمر"
+
+#: accounts/forms.py:79 accounts/models.py:71
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: accounts/forms.py:80 accounts/forms.py:195 accounts/forms.py:256
+msgid "Password"
+msgstr "كلمة السر"
+
+#: accounts/forms.py:81 accounts/forms.py:196
+msgid "Confirm Password"
+msgstr "تأكيد كلمة السر"
+
+#: accounts/forms.py:84
+msgid "captcha"
+msgstr "رمز التحقق"
+
+#: accounts/models.py:30 accounts/models.py:75
+msgid "Is Approved"
+msgstr "هل تمت الموافقة"
+
+#: accounts/models.py:59
+msgid "role"
+msgstr "الدور"
+
+#: accounts/models.py:62
+msgid "gender"
+msgstr "الجنس"
+
+#: heartcare/settings.py:84
+msgid "English"
+msgstr "en"
+
+#: heartcare/settings.py:85
+msgid "Arabic"
+msgstr "عربي"
+
+#: templates/accounts/doctor/register.html:5
+msgid "Doctor Registration"
+msgstr "تسجيل الدخول ك مريض"
+
+#: templates/accounts/doctor/register.html:15 templates/accounts/login.html:16
+#: templates/accounts/patient/register.html:14
+#: templates/partials/_header.html:10
+msgid "Call at:"
+msgstr "الاتصال بالرقم"
+
+#: templates/accounts/doctor/register.html:17 templates/accounts/login.html:17
+#: templates/accounts/patient/register.html:15
+#: templates/partials/_header.html:11
+msgid "Email us:"
+msgstr "إرسال إيميل"
+
+#: templates/accounts/doctor/register.html:50 templates/accounts/login.html:44
+#: templates/accounts/patient/register.html:42
+#: templates/hospital/consultation.html:13 templates/hospital/contact.html:13
+#: templates/hospital/faqs.html:14 templates/hospital/gallery.html:13
+#: templates/hospital/service_details.html:13
+#: templates/hospital/services.html:13 templates/hospital/team-details.html:13
+#: templates/hospital/team.html:14 templates/partials/_header.html:38
+msgid "Home"
+msgstr "الرئيسية"
+
+#: templates/accounts/doctor/register.html:52
+#: templates/accounts/patient/register.html:44
+#: templates/partials/_header.html:40
+msgid "Medical topics"
+msgstr "المواضيع الطبية"
+
+#: templates/accounts/doctor/register.html:56
+#: templates/accounts/patient/register.html:47
+#: templates/partials/_header.html:42
+msgid "Features"
+msgstr "إضافات"
+
+#: templates/accounts/doctor/register.html:59
+#: templates/accounts/patient/register.html:49
+#: templates/hospital/gallery.html:9 templates/partials/_header.html:44
+msgid "Gallery"
+msgstr "صالة عرض"
+
+#: templates/accounts/doctor/register.html:60
+#: templates/accounts/patient/register.html:50
+#: templates/partials/_header.html:45
+msgid "Faqs"
+msgstr "الأسئلة الشائعة"
+
+#: templates/accounts/doctor/register.html:63
+#: templates/accounts/patient/register.html:53
+#: templates/hospital/contact.html:9 templates/hospital/contact.html:14
+#: templates/partials/_header.html:48
+msgid "Contact"
+msgstr "تواصل معنا"
+
+#: templates/accounts/doctor/register.html:102
+msgid "Doctor Register"
+msgstr "تسجيل الطبيب"
+
+#: templates/accounts/login.html:5 templates/partials/_header.html:68
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/accounts/login.html:46 templates/hospital/services.html:9
+#: templates/hospital/services.html:14
+msgid "medical topics"
+msgstr "المواضيع الطبية"
+
+#: templates/accounts/login.html:51
+msgid "Register"
+msgstr "انضم الينا الان"
+
+#: templates/accounts/login.html:53 templates/partials/_header.html:62
+msgid "DOCTOR"
+msgstr "طبيب"
+
+#: templates/accounts/login.html:54 templates/partials/_header.html:63
+msgid "PATIENT"
+msgstr "مريض"
+
+#: templates/accounts/login.html:93
+msgid "Login now"
+msgstr "تسجيل الدخول الان"
+
+#: templates/accounts/patient/register.html:4
+msgid "Patient registration"
+msgstr "تسجيل الدخول ك مريض"
+
+#: templates/accounts/patient/register.html:93
+msgid "Registration for patient"
+msgstr "تسجيل الدخول للمريض"
+
+#: templates/base.html:11
+msgid "Heart Care | Heart Hospital"
+msgstr "العناية بالقلب | مستشفى القلب"
+
+#: templates/hospital/consultation.html:9
+#, fuzzy
+#| msgid "consultation text"
+msgid "Consultations"
+msgstr "نص الاستشارة"
+
+#: templates/hospital/consultation.html:14
+#, fuzzy
+#| msgid "consultation text"
+msgid "Ask for Consultations"
+msgstr "نص الاستشارة"
+
+#: templates/hospital/consultation.html:43 templates/hospital/contact.html:76
+msgid "Contact Information:"
+msgstr "معلومات الاتصال"
+
+#: templates/hospital/consultation.html:46 templates/partials/_footer.html:39
+msgid "Syria Latakia"
+msgstr "سوريا اللاذقية"
+
+#: templates/hospital/consultation.html:47
+msgid "Tishreen Hospital"
+msgstr "مستشفى تشرين"
+
+#: templates/hospital/consultation.html:48
+msgid "SRYIA"
+msgstr "سورريا"
+
+#: templates/hospital/consultation.html:52 templates/hospital/contact.html:85
+#: templates/partials/_footer.html:43
+msgid "For Inquiry:"
+msgstr "للاستفسار"
+
+#: templates/hospital/consultation.html:54 templates/hospital/contact.html:87
+msgid "For Details:"
+msgstr "لمزيد من المعلومات"
+
+#: templates/hospital/contact.html:39
+msgid "Get in Touch"
+msgstr "ابقى على تواصل"
+
+#: templates/hospital/contact.html:79
+msgid "Cheryy Road, Wirral Road"
+msgstr "طريق الريف، شارع النصر"
+
+#: templates/hospital/contact.html:80
+msgid "Heart care Building,"
+msgstr "مبنى العناية بالقلب"
+
+#: templates/hospital/contact.html:81
+msgid "Syria "
+msgstr "سورياا"
+
+#: templates/hospital/faqs.html:10 templates/hospital/faqs.html:15
+msgid "Faq’s"
+msgstr "لمزيد من المعلومات"
+
+#: templates/hospital/faqs.html:49
+msgid "Search"
+msgstr "ابحث"
+
+#: templates/hospital/faqs.html:56
+msgid "Text Widget"
+msgstr "نص"
+
+#: templates/hospital/faqs.html:57
+msgid ""
+"Enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit "
+"laboriosam"
+msgstr "لأقل عذر ، أي واحد منا يقوم بأي تمرين بدني"
+
+#: templates/hospital/faqs.html:60
+msgid "Newsletter"
+msgstr "رسالة"
+
+#: templates/hospital/faqs.html:63
+msgid "Subscribe Now"
+msgstr "اشترك الان"
+
+#: templates/hospital/gallery.html:14
+msgid "Gallery Small"
+msgstr "صالة عرض"
+
+#: templates/hospital/index.html:13
+msgid "Welcome to your"
+msgstr "اهلا في"
+
+#: templates/hospital/index.html:14
+msgid "Our Heart Care"
+msgstr "العناية بالقلب لدينا"
+
+#: templates/hospital/index.html:16
+msgid ""
+"The Heart Care Heart Hospital have latest technology machines with experty "
+"Heart specialist doctors consectetur adipisicing elit. Distinctio vitae "
+"maiores enim ea atque? Natus iure autem cumque, quaerat distinctio pariatur "
+"velit illo hic a eos accusamus deleniti totam repellendus reiciendis, nobis "
+"vero dolorem nesciunt officia facere perspiciatis fugiat."
+msgstr ""
+"يحتوي مستشفى امراض القلب على أحدث الأجهزة التكنولوجية مع أطباء متخصصين في "
+"القلب ما هو الفرق الرئيسي بين الحياة و ذلك؟ وعندما ولد بشكل صحيح ، أراد أن "
+"يحدث فرقًا في الطريقة التي سيحدث بها السلام معهم."
+
+#: templates/hospital/index.html:17
+msgid ""
+"Sapiente accusamus repudiandae architecto corporis aspernatur. Eligendi, "
+"accusamus quas mollitia. Natus iure autem cumque, quaerat distinctio "
+"pariatur velit illo hic a eos accusamus deleniti totam  repellendus "
+"reiciendis, nobis vero dolorem nesciunt officia facere perspiciatis  fugiat."
+msgstr ""
+"نتهم الرجل الحكيم برفض كمال الأجسام الذي يرفضه. اختياراتأنا أتهمك بالغموض. "
+"ولدت الآن وعندما تبحث عن الفرق!يريد أن يؤدي إلى ذلك هناومع ذلك ، فإن رفضنا "
+"لنا لا نعرف كيف نهرب من ألم أداء الخدمات التي تواجهها."
+
+#: templates/hospital/index.html:18
+msgid "Ibrahem Mahmood"
+msgstr "إبراهيم محمود"
+
+#: templates/hospital/index.html:19
+msgid "MS Heart Care Hospital"
+msgstr "العناية بالقلب | مستشفى القلب"
+
+#: templates/hospital/index.html:38
+msgid "Cardio Monitoring"
+msgstr "مراقبة القلب"
+
+#: templates/hospital/index.html:39
+msgid ""
+"Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+"Lorem Ipsu has been the industry's standard dummy text ever since the 1500s."
+msgstr ""
+"الإنترنت هو مجرد نص وهمي في صناعة الطباعة والتنضيد.كان المنزل هو النص الوهمي "
+"القياسي في الصناعة منذ القرن الخامس عشر الميلادي."
+
+#: templates/hospital/index.html:40
+msgid "Get Free Appointment"
+msgstr "احجز موعدا مجانا"
+
+#: templates/hospital/index.html:45
+msgid "First Aid"
+msgstr "الاسم الاول"
+
+#: templates/hospital/index.html:46
+msgid ""
+"Pellentesque ligula odio, tempor sit amet fringilla vitae, pulvinar "
+"ullamcorper quamenatibus et magnis dis parturient montes nasce"
+msgstr "عقد حول العالمتحمل الشجر وتولد الجبال مع آلهة عظيمة"
+
+#: templates/hospital/index.html:51
+msgid "Emergency Help"
+msgstr "خدمات الطوارئ"
+
+#: templates/hospital/index.html:52
+msgid "Monday-Friday:"
+msgstr "الاثنين - الجمعة"
+
+#: templates/hospital/index.html:52 templates/hospital/index.html:53
+msgid "Full Day"
+msgstr "كل اليوم"
+
+#: templates/hospital/index.html:53
+msgid "Satuday:"
+msgstr "السبت"
+
+#: templates/hospital/index.html:54
+msgid "Sunday:"
+msgstr "الاحد"
+
+#: templates/hospital/index.html:56
+msgid "Callfor Info:"
+msgstr "اتصل للاستفسار"
+
+#: templates/hospital/index.html:69
+msgid "Our Departments"
+msgstr "أقسامنا"
+
+#: templates/hospital/index.html:70
+msgid "Departments medical topics"
+msgstr "اقسام المواضيع الطبية"
+
+#: templates/hospital/index.html:119 templates/hospital/services.html:64
+msgid "View more"
+msgstr "عرض المزيد"
+
+#: templates/hospital/index.html:148
+msgid "Our Core"
+msgstr "جوهرنا"
+
+#: templates/hospital/index.html:149
+msgid "Expert Services"
+msgstr "خدمات الخبراء"
+
+#: templates/hospital/index.html:159 templates/hospital/index.html:183
+msgid "Experienced Surgeons"
+msgstr "الجراحين ذوي الخبرة"
+
+#: templates/hospital/index.html:162 templates/hospital/index.html:196
+msgid "Special Treatments"
+msgstr "علاجات خاصة"
+
+#: templates/hospital/index.html:165
+msgid " Comfort Environment"
+msgstr "بيئة مريحة"
+
+#: templates/hospital/index.html:168 templates/hospital/index.html:222
+msgid "Talented Cardiologist"
+msgstr "اسأل اخصائي القلب"
+
+#: templates/hospital/index.html:171 templates/hospital/index.html:237
+msgid "High Tech Equipments"
+msgstr "تقنيات عالية المستوى"
+
+#: templates/hospital/index.html:174 templates/hospital/index.html:251
+msgid "Personalized Care"
+msgstr "عناية شخصية"
+
+#: templates/hospital/index.html:184 templates/hospital/index.html:197
+#: templates/hospital/index.html:210 templates/hospital/index.html:224
+#: templates/hospital/index.html:238 templates/hospital/index.html:252
+msgid ""
+"Ut finibus sem in erat pretium, ultrices semper lorem aliquet. Nulla "
+"ultricies sagittis tellus at elementum. Cras consectetur congue diam nec "
+"imperdiet. Phasellus accumsan faucibus lectus."
+msgstr ""
+"هذا هو السعر في السلطة الحدودية ، هناك دائمًا سيارة للسائق.إنها مجرد أسهم "
+"الأرض في العنصر.تاريخ السرير"
+
+#: templates/hospital/index.html:186 templates/hospital/index.html:199
+#: templates/hospital/index.html:212 templates/hospital/index.html:227
+#: templates/hospital/index.html:241 templates/hospital/index.html:255
+msgid "Vestibulum gravida massa ac sem potitor, ac  effic."
+msgstr "أنت حامل والكتلة هي الفاتح والمبدع"
+
+#: templates/hospital/index.html:188 templates/hospital/index.html:201
+#: templates/hospital/index.html:214 templates/hospital/index.html:229
+#: templates/hospital/index.html:243 templates/hospital/index.html:257
+msgid "Quisque non lacus tempus nisi fringilla feugiat."
+msgstr "ليست كل بحيرة مؤقتة باستثناء عملائنا."
+
+#: templates/hospital/index.html:190 templates/hospital/index.html:203
+#: templates/hospital/index.html:216 templates/hospital/index.html:231
+#: templates/hospital/index.html:245 templates/hospital/index.html:259
+msgid "Sed pretium diam in maximus is consectetur."
+msgstr "لكن تم تحسين سعر أكبر مشتر."
+
+#: templates/hospital/index.html:209
+msgid "Comfort Environment"
+msgstr "بيئة مريحة"
+
+#: templates/hospital/index.html:275
+msgid "Our Team"
+msgstr "توقيتنا"
+
+#: templates/hospital/index.html:276
+msgid "Expert Team"
+msgstr "فريقنا الخبير"
+
+#: templates/hospital/index.html:324
+msgid "Read What Says Our"
+msgstr "اقرأ ما يقال"
+
+#: templates/hospital/index.html:325
+msgid "Happy Patients"
+msgstr "مرضى سعداء"
+
+#: templates/hospital/index.html:333
+msgid "Miram maye"
+msgstr "مريام"
+
+#: templates/hospital/index.html:334 templates/hospital/index.html:345
+#: templates/hospital/index.html:356
+msgid "A heart patient"
+msgstr "مريض القلب "
+
+#: templates/hospital/index.html:336 templates/hospital/index.html:347
+#: templates/hospital/index.html:358
+msgid ""
+"An exellent hospital and a Cardiologists. Quisque egestas libero vitae lacus "
+"sagittis, eget viverra tellus vehicula. Aenean efficitur faucibus felis, non "
+"laoreet nisl congue non. In quis pharetra urna. Aliquam in enim efficitur, "
+"bibendum dolor eu, elementumturpis."
+msgstr ""
+"مستشفى ممتاز وأطباء قلب.السهام ، تحتاج الأرض إلى سحب المركبات. يصبح أينيس "
+"حلق القطةلا مضخات للاعبين. في أي جعبةلشرب ألم كرة القدم ، عنصر"
+
+#: templates/hospital/index.html:344
+msgid "Hilal Khadour"
+msgstr "هلال خضور"
+
+#: templates/hospital/index.html:355
+msgid "miram maye"
+msgstr "مريم ميمون"
+
+#: templates/hospital/index.html:374
+msgid "Feel Free For"
+msgstr "لا تتردد في"
+
+#: templates/hospital/index.html:375
+msgid "Any FAQ’s"
+msgstr "أي أسئلة وأجوبة"
+
+#: templates/hospital/index.html:384
+msgid "How much you charge for consultancy"
+msgstr "كم تدفع مقابل الاستشارات"
+
+#: templates/hospital/index.html:388
+msgid "Our commercialization strategy involves a rapid development"
+msgstr "تتضمن إستراتيجيتنا للتسويق تطوراً سريعاً"
+
+#: templates/hospital/index.html:400
+msgid "What kind of patients do you treat? "
+msgstr "أي نوع من المرضى تعالجون؟"
+
+#: templates/hospital/index.html:404
+msgid " Our commercialization strategy involves a rapid development"
+msgstr "تتضمن إستراتيجيتنا للتسويق تطوراً سريعا جداً"
+
+#: templates/hospital/index.html:414
+msgid "Where does my refering Cardiologist go? "
+msgstr "أين يذهب طبيب القلب الخاص بي؟"
+
+#: templates/hospital/index.html:418
+msgid " Our commercialization strategy involves a rapid development "
+msgstr "تتضمن إستراتيجيتنا للتسويق تطوراً سريعا جدا جدا"
+
+#: templates/hospital/service_details.html:54
+msgid "Cardio medical topics"
+msgstr "المواضيع الطبية"
+
+#: templates/hospital/team-details.html:9
+#: templates/hospital/team-details.html:14
+msgid "Doctors Details"
+msgstr "لمزيد من المعلومات"
+
+#: templates/hospital/team.html:10
+msgid "Our Doctors"
+msgstr "جوهرنا"
+
+#: templates/hospital/team.html:15
+msgid "Doctors"
+msgstr "الاطباء"
+
+#: templates/partials/_footer.html:8
+msgid ""
+"The Heart Care Heart Hospital have latest technology machines with experty "
+"Heart specialist doctors consectetur adipisicing elit. Distinctio vitae "
+"maiores enim ea atque? Natus iure autem cumque, quaerat distinctio pariatur "
+"velit illo hic a eos paccusamus."
+msgstr ""
+"يحتوي مستشفى امراض القلب على أحدث الأجهزة التكنولوجية مع أطباء متخصصين في "
+"القلب ما هو الفرق الرئيسي بين الحياة و ذلك؟ وعندما ولد بشكل صحيح ، أراد أن "
+"يحدث فرقًا في الطريقة التي سيحدث بها السلام معهم."
+
+#: templates/partials/_footer.html:13
+msgid "Our medical topic"
+msgstr "المواضيع الطبية"
+
+#: templates/partials/_footer.html:35
+msgid "Contact us"
+msgstr "تواصل معنا"
+
+#: templates/partials/_footer.html:39
+msgid "Main Branch:"
+msgstr "المقر الرئيسي"
+
+#: templates/partials/_footer.html:41
+msgid "Call us Anytime at:"
+msgstr "تواصل معنا في الاوقات"
+
+#: templates/partials/_footer.html:45
+msgid "Our Timings:"
+msgstr "توقيتنا"
+
+#: templates/partials/_footer.html:45
+msgid "San-Fri: 8:00am-2:00pm"
+msgstr "من الاحد للجمعة من الساعة الثامنة صباحا وحتى الثانية ظهرا"
+
+#: templates/partials/_footer.html:64
+msgid "HeartCare"
+msgstr "العناية بالقلب"
+
+#: templates/partials/_footer.html:64
+msgid ""
+"All Rights Reserved & Developed By Mouiad Ali, Mazen Souda, Milad Awad and "
+"Abdullah Ghazel"
+msgstr ""
+"جميع الحقوق محفوظة، تم التطوير من قبل مؤيد علي، مازن سودا ، ميلاد عواد "
+"وعبدلله غزيل"
+
+#: templates/partials/_header.html:50
+msgid "Consultation"
+msgstr "نص الاستشارة"
+
+#: templates/partials/_header.html:60
+msgid "Register now"
+msgstr "انضم الينا الان"
+
+#: templates/partials/_header.html:73
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/partials/_slider.html:10
+msgid "Call for Inquiry"
+msgstr "اتصل للاستفسار"
+
+#: templates/partials/_slider.html:10
+msgid "Ask Cardiologist"
+msgstr "اسأل اخصائي القلب"
+
+#, fuzzy
+#~| msgid "Contact"
+#~ msgid "Contact Us"
+#~ msgstr "تواصل معنا"
+
+#, fuzzy
+#~| msgid "Medical topics"
+#~ msgid "Departmental medical topics"
+#~ msgstr "المواضيع الطبية"
+
+#, fuzzy
+#~| msgid "medical history"
+#~ msgid "medical_history"
+#~ msgstr "التاريخ الطبي"
+
+#, fuzzy
+#~| msgid "consultation text"
+#~ msgid "consultation_text"
+#~ msgstr "نص الاستشارة"
+
+#~ msgid "male"
+#~ msgstr "ذكر"
+
+#~ msgid "female"
+#~ msgstr "أنثى"
+
+#~ msgid "Status"
+#~ msgstr "حالات"

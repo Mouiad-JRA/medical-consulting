@@ -1,20 +1,18 @@
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
-
+from django.utils.translation import gettext_lazy as _
 from captcha.fields import CaptchaField
 
 from accounts.models import User, Consultation
-
-GENDER_CHOICES = (
-    ('male', 'Male'),
-    ('female', 'Female'))
 
 
 class ConsultationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ConsultationForm, self).__init__(*args, **kwargs)
+        self.fields['consultation_text'].label = _("consultation text")
+        self.fields['medical_history'].label = _("medical history")
         self.fields['medical_history'].widget.attrs.update(
             {
                 'placeholder': 'Enter Your medical history',
@@ -73,16 +71,17 @@ class PatientRegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(PatientRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['gender'].required = True
-        self.fields['first_name'].label = "First Name"
-        self.fields['last_name'].label = "Last Name"
-        self.fields['email'].label = "Email"
-        self.fields['age'].label = "age"
+        self.fields['first_name'].label = _("First Name")
+        self.fields['last_name'].label = _("Last Name")
+        self.fields['email'].label = _("Email")
+        self.fields['age'].label = _("age")
 
-        self.fields['phone_number'].label = "Phone Number"
-        self.fields['password1'].label = "Password"
-        self.fields['password2'].label = "Confirm Password"
-        self.fields['consultation_text'].label = "consultation text"
-        self.fields['medical_history'].label = "medical history"
+        self.fields['phone_number'].label = _("Phone Number")
+        self.fields['password1'].label = _("Password")
+        self.fields['password2'].label = _("Confirm Password")
+        self.fields['consultation_text'].label = _("consultation text")
+        self.fields['medical_history'].label = _("medical history")
+        self.fields['captcha'].label = _("captcha")
         for fieldname in ['password1', 'password2']:
             self.fields[fieldname].help_text = None
 
@@ -191,10 +190,10 @@ class DoctorRegistrationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(DoctorRegistrationForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'].label = "First Name"
-        self.fields['last_name'].label = "Last Name"
-        self.fields['password1'].label = "Password"
-        self.fields['password2'].label = "Confirm Password"
+        self.fields['first_name'].label = _("First Name")
+        self.fields['last_name'].label = _("Last Name")
+        self.fields['password1'].label = _("Password")
+        self.fields['password2'].label = _("Confirm Password")
         for fieldname in ['password1', 'password2']:
             self.fields[fieldname].help_text = None
 
@@ -254,7 +253,7 @@ class DoctorRegistrationForm(UserCreationForm):
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(
-        label="Password",
+        label=_("Password"),
         strip=False,
         widget=forms.PasswordInput,
     )
@@ -262,6 +261,7 @@ class UserLoginForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.user = None
+        self.fields['email'].label = _("Email")
         self.fields['email'].widget.attrs.update({'placeholder': 'Enter Email'})
         self.fields['password'].widget.attrs.update({'placeholder': 'Enter Password'})
 

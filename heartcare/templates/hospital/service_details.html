@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
@@ -9,7 +10,7 @@
       </div>
       <div class="col-md-5">
         <ol class="breadcrumb">
-          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
           <li class="active"> {{ object.title }} </li>
         </ol>
       </div>
@@ -50,7 +51,7 @@
         </div>
         <div class="col-md-4">
           <div class="services-nav">
-            <h3>Cardio medical topics</h3>
+            <h3>{% trans "Cardio medical topics" %}</h3>
             <ul class="side-nav">
               {% for service in services %}
               <li {% if service.id is object.id %}class="active" {% endif %}><a

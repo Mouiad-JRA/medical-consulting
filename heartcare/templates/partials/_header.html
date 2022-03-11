@@ -1,4 +1,5 @@
-{% load static %}
+{% load static i18n %}
+
 <header class="site-header">
 
   <div class="top-bar">
@@ -6,8 +7,8 @@
       <div class="row">
         <div class="col-md-6 col-sm-8">
           <ul>
-            <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+963994350933</strong></li>
-            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email us: <strong>mouiad.ali.work@gmail.com</strong>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> {% trans "Call at:" %} <strong>+963994350933</strong></li>
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {% trans "Email us:" %} <strong>mouiad.ali.work@gmail.com</strong>
             </li>
           </ul>
         </div>
@@ -34,19 +35,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
                 </li>
-                <li><a href="{% url 'services' %}">Medical topics</a></li>
+                <li><a href="{% url 'services' %}">{% trans "Medical topics" %}</a></li>
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-haspopup="true" aria-expanded="false">Features <span class="fa fa-angle-down"></span></a>
+                    aria-haspopup="true" aria-expanded="false">{% trans "Features" %} <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'faqs' %}">Faqs</a></li>
+                    <li><a href="{% url 'gallery' %}">{% trans "Gallery" %}</a></li>
+                    <li><a href="{% url 'faqs' %}">{% trans "Faqs" %}</a></li>
                   </ul>
                 </li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
                              {% if request.user.is_authenticated and request.user.role == 'patient' %}
-                <li><a href="{% url 'consultation' %}">Consultation</a></li>
+                <li><a href="{% url 'consultation' %}">{% trans "Consultation" %}</a></li>
                   {% endif %}
               </ul>
 
@@ -56,20 +57,20 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if not user.is_authenticated %}
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-haspopup="true" aria-expanded="false">Register <span class="fa fa-angle-down"></span></a>
+                    aria-haspopup="true" aria-expanded="false">{% trans "Register now" %} <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'accounts:doctor-register' %}">DOCTOR</a></li>
-                    <li><a href="{% url 'accounts:patient-register' %}">PATIENT</a></li>
+                    <li><a href="{% url 'accounts:doctor-register' %}">{% trans "DOCTOR" %}</a></li>
+                    <li><a href="{% url 'accounts:patient-register' %}">{% trans "PATIENT" %}</a></li>
                   </ul>
                 </li>
 
                     {#                <li><a class="appoint" href="{% url 'appointment:doctor-appointment-create' %}">Appointment</a></li>#}
-                    <li><a class="appoint" href="{% url 'accounts:login' %}"> Login </a></li>
+                    <li><a class="appoint" href="{% url 'accounts:login' %}"> {% trans "Login" %} </a></li>
                     <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
                                                                         alt=""></a></li>
 
                 {% else %}
-                                    <li><a class="appoint" href="{% url 'accounts:logout' %}"> Logout </a></li>
+                                    <li><a class="appoint" href="{% url 'accounts:logout' %}"> {% trans "Logout" %} </a></li>
                     <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
                                                                         alt=""></a></li>
                  {% endif %}

@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Contact</h1>
+        <h1>{% trans "Contact" %}</h1>
       </div>
       <div class="col-md-5">
         <ol class="breadcrumb">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li class="active">Contact</li>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          <li class="active">{% trans "Contact" %}</li>
         </ol>
       </div>
     </div>
@@ -36,7 +36,7 @@
             {% csrf_token %}
             <div class="contact-form">
               <div class="col-md-12">
-                <h3>Get in Touch</h3>
+                <h3>{% trans "Get in Touch" %}</h3>
               </div>
               <div class="col-md-6">
                 <div class="input-group">
@@ -73,18 +73,18 @@
         </div>
         <div class="col-md-5">
           <div class="contact-address">
-            <h5>Contact Information:</h5>
+            <h5>{% trans "Contact Information:" %}</h5>
             <ul>
               <li> <span class="icon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span> <span
-                  class="add-text">Cheryy Road, Wirral Road<br>
-                  Heart care Building,<br>
-                  United Kingdom</span> </li>
+                  class="add-text">{% trans "Cheryy Road, Wirral Road" %}<br>
+                  {% trans "Heart care Building," %}<br>
+                  {% trans "Syria " %}</span> </li>
               <li> <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i> </span> <span class="add-text">+963994350933<br>
                   +963994350933</span> </li>
               <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i> </span> <span
-                  class="add-text"><strong>For Inquiry:</strong> mouiad.ali.work@gmail.com</span> </li>
+                  class="add-text"><strong>{% trans "For Inquiry:" %}</strong> mouiad.ali.work@gmail.com</span> </li>
               <li> <span class="icon"><i class="fa fa-globe" aria-hidden="true"></i> </span> <span
-                  class="add-text"><strong>For Details:</strong> www.Heartcare.com</span> </li>
+                  class="add-text"><strong>{% trans "For Details:" %}</strong>mouiad.ali.work@gmail.com</span> </li>
             </ul>
           </div>
         </div>

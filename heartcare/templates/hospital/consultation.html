@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-{% load static bootstrap%}
+{% load static bootstrap i18n %}
 {% block maincontent %}
 <!--inner banner-->
 <div class="inner-banner">
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Consultations</h1>
+        <h1>{% trans "Consultations"%}</h1>
       </div>
       <div class="col-md-5">
         <ol class="breadcrumb">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li class="active">Ask for Consultations</li>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          <li class="active">{% trans "Ask for Consultations" %}</li>
         </ol>
       </div>
     </div>
@@ -40,18 +40,18 @@
         </div>
         <div class="col-md-5">
           <div class="contact-address">
-            <h5>Contact Information:</h5>
+            <h5>{% trans "Contact Information:" %}</h5>
             <ul>
               <li> <span class="icon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span> <span
-                  class="add-text">Syria Latakia<br>
-                  Tishreen Hospital<br>
-                  SRYIA</span> </li>
+                  class="add-text">{% trans "Syria Latakia"%}<br>
+                  {% trans "Tishreen Hospital" %}<br>
+                  {% trans "SRYIA" %}</span> </li>
               <li> <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i> </span> <span class="add-text">+963994350933<br>
                   +963994350933</span> </li>
               <li> <span class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i> </span> <span
-                  class="add-text"><strong>For Inquiry:</strong> mouiad.ali.work@gmail.com</span> </li>
+                  class="add-text"><strong>{% trans "For Inquiry:" %}</strong> mouiad.ali.work@gmail.com</span> </li>
               <li> <span class="icon"><i class="fa fa-globe" aria-hidden="true"></i> </span> <span
-                  class="add-text"><strong>For Details:</strong> www.Heartcare.com</span> </li>
+                  class="add-text"><strong>{% trans "For Details:" %}</strong>mouiad.ali.work@gmail.com</span> </li>
             </ul>
           </div>
         </div>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block maincontent %}
 
 <!--inner banner-->
@@ -7,12 +7,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
-        <h1>Faq’s</h1>
+        <h1>{% trans "Faq’s" %}</h1>
       </div>
       <div class="col-md-5">
         <ol class="breadcrumb">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li class="active">Faq’s</li>
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          <li class="active">{% trans "Faq’s" %}</li>
         </ol>
       </div>
     </div>
@@ -46,22 +46,21 @@
         <aside class="col-md-3">
           <div class="sidebar">
             <div class="widget search-widget">
-              <h3>Search</h3>
+              <h3>{% trans "Search" %}</h3>
               <form class="search-form">
                 <input placeholder="Enter Key words" type="search">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
             <div class="widget text-widget">
-              <h3>Text Widget</h3>
-              <p>Enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-                aliquid commodi consequatur quis autem.</p>
+              <h3>{% trans "Text Widget" %}</h3>
+              <p>{% trans "Enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam" %}</p>
             </div>
             <div class="widget newsletter-widget">
-              <h3>Newsletter</h3>
+              <h3>{% trans "Newsletter" %}</h3>
               <form class="newsletter-form">
                 <input placeholder="Enter your Email" type="email">
-                <button type="submit">Subscribe Now <i class="fa fa-envelope" aria-hidden="true"></i></button>
+                <button type="submit">{% trans "Subscribe Now" %} <i class="fa fa-envelope" aria-hidden="true"></i></button>
               </form>
             </div>
           </div>

@@ -1,12 +1,14 @@
-{% load static hitcount_tags %}
+{% load static hitcount_tags i18n%}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}" class="{% if LANGUAGE_CODE == 'ar' %}ar{% endif %}">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heart Care | Heart Hospital</title>
+  <title>{% trans "Heart Care | Heart Hospital" %}</title>
   {% include 'partials/_css.html' %}
 
   <!--[if lt IE 9]>

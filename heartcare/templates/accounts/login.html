@@ -1,8 +1,8 @@
 
-{% load static bootstrap%}
+{% load static bootstrap i18n%}
 
 <head class="back">
-    <title>Login</title>
+    <title>{% trans "Login" %}</title>
 
   {% include 'partials/_css.html' %}
   {% include 'partials/_js.html' %}
@@ -13,8 +13,8 @@
       <div class="row">
         <div class="col-md-6 col-sm-8">
           <ul>
-            <li><i class="fa fa-phone" aria-hidden="true"></i> Call at: <strong>+8801719058105</strong></li>
-            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> Email us: <strong>info@heartcare.com</strong>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> {% trans "Call at:" %} <strong>+8801719058105</strong></li>
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i>{% trans "Email us:" %} <strong>info@heartcare.com</strong>
             </li>
           </ul>
         </div>
@@ -41,17 +41,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
                 </li>
-                <li><a href="{% url 'services' %}">medical topics</a></li>
+                <li><a href="{% url 'services' %}">{% trans "medical topics" %}</a></li>
 {#                <li><a href="{% url 'doctors' %}">Doctors</a></li>#}
 
                     {% if not user.is_authenticated %}
                     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-haspopup="true" aria-expanded="false">Register <span class="fa fa-angle-down"></span></a>
+                    aria-haspopup="true" aria-expanded="false">{% trans "Register" %} <span class="fa fa-angle-down"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="{% url 'accounts:doctor-register' %}">DOCTOR</a></li>
-                    <li><a href="{% url 'accounts:patient-register' %}">PATIENT</a></li>
+                    <li><a href="{% url 'accounts:doctor-register' %}">{% trans "DOCTOR" %}</a></li>
+                    <li><a href="{% url 'accounts:patient-register' %}">{% trans "PATIENT" %}</a></li>
                   </ul>
                 </li>
                       {% endif %}
@@ -90,7 +90,7 @@
     <div class="row justify-content-center">
 
     <div class="col-lg-5 mb-5 mb-lg-0">
-    <center><h3>Login</h3></center>
+    <center><h3>{% trans "Login now" %}</h3></center>
 
     <form action="" method="POST">{% csrf_token %}
 

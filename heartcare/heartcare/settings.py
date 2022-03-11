@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'heartcare.urls'
@@ -77,7 +78,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'heartcare.wsgi.application'
 
+from django.utils.translation import gettext_lazy as _
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('ar', _('Arabic')),
+]
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -118,6 +124,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 SITE_ID = 2
 # Static files (CSS, JavaScript, Images)
