@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 18:59+0000\n"
+"POT-Creation-Date: 2022-03-11 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: accounts/admin.py:14 accounts/models.py:57
-#: templates/partials/_header.html:50
+#: templates/partials/_header.html:57
 msgid "Consultation"
 msgstr "نص الاستشارة"
 
@@ -95,8 +95,6 @@ msgid "Arabic"
 msgstr "عربي"
 
 #: hospital/apps.py:6
-
-#| msgid "Tishreen Hospital"
 msgid "Hospitals"
 msgstr "مستشفى "
 
@@ -127,13 +125,13 @@ msgstr "الأسئلة الشائعة"
 
 #: hospital/models.py:84 templates/accounts/doctor/register.html:60
 #: templates/accounts/patient/register.html:50
-#: templates/partials/_header.html:45
+#: templates/partials/_header.html:51
 msgid "Faqs"
 msgstr "الأسئلة الشائعة"
 
 #: hospital/models.py:95 templates/accounts/doctor/register.html:59
 #: templates/accounts/patient/register.html:49
-#: templates/hospital/gallery.html:9 templates/partials/_header.html:44
+#: templates/hospital/gallery.html:9 templates/partials/_header.html:50
 msgid "Gallery"
 msgstr "صالة عرض"
 
@@ -147,13 +145,13 @@ msgstr "تسجيل الدخول ك مريض"
 
 #: templates/accounts/doctor/register.html:15 templates/accounts/login.html:16
 #: templates/accounts/patient/register.html:14
-#: templates/partials/_header.html:10
+#: templates/partials/_header.html:13
 msgid "Call at:"
 msgstr "الاتصال بالرقم"
 
 #: templates/accounts/doctor/register.html:17 templates/accounts/login.html:17
 #: templates/accounts/patient/register.html:15
-#: templates/partials/_header.html:11
+#: templates/partials/_header.html:14
 msgid "Email us:"
 msgstr "إرسال إيميل"
 
@@ -163,26 +161,25 @@ msgstr "إرسال إيميل"
 #: templates/hospital/faqs.html:14 templates/hospital/gallery.html:13
 #: templates/hospital/service_details.html:13
 #: templates/hospital/services.html:13 templates/hospital/team-details.html:13
-#: templates/hospital/team.html:14 templates/partials/_header.html:38
+#: templates/hospital/team.html:14 templates/partials/_header.html:44
 msgid "Home"
 msgstr "الرئيسية"
 
 #: templates/accounts/doctor/register.html:52
 #: templates/accounts/patient/register.html:44
-#: templates/partials/_header.html:40
+#: templates/partials/_header.html:46
 msgid "Medical topics"
 msgstr "المواضيع الطبية"
 
 #: templates/accounts/doctor/register.html:56
 #: templates/accounts/patient/register.html:47
-#: templates/partials/_header.html:42
+#: templates/partials/_header.html:48
 msgid "Features"
 msgstr "إضافات"
 
 #: templates/accounts/doctor/register.html:63
 #: templates/accounts/patient/register.html:53
 #: templates/hospital/contact.html:9 templates/hospital/contact.html:14
-#: templates/partials/_header.html:48
 msgid "Contact"
 msgstr "تواصل معنا"
 
@@ -190,7 +187,7 @@ msgstr "تواصل معنا"
 msgid "Doctor Register"
 msgstr "تسجيل الطبيب"
 
-#: templates/accounts/login.html:5 templates/partials/_header.html:68
+#: templates/accounts/login.html:5 templates/partials/_header.html:91
 msgid "Login"
 msgstr "تسجيل الدخول"
 
@@ -198,11 +195,11 @@ msgstr "تسجيل الدخول"
 msgid "Register"
 msgstr "انضم الينا الان"
 
-#: templates/accounts/login.html:53 templates/partials/_header.html:62
+#: templates/accounts/login.html:53 templates/partials/_header.html:85
 msgid "DOCTOR"
 msgstr "طبيب"
 
-#: templates/accounts/login.html:54 templates/partials/_header.html:63
+#: templates/accounts/login.html:54 templates/partials/_header.html:86
 msgid "PATIENT"
 msgstr "مريض"
 
@@ -604,10 +601,14 @@ msgstr ""
 "وعبدلله غزيل"
 
 #: templates/partials/_header.html:60
+msgid "Language"
+msgstr "اللغة"
+
+#: templates/partials/_header.html:83
 msgid "Register now"
 msgstr "انضم الينا الان"
 
-#: templates/partials/_header.html:73
+#: templates/partials/_header.html:96
 msgid "Logout"
 msgstr "تسجيل الخروج"
 
