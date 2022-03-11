@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 18:48+0000\n"
+"POT-Creation-Date: 2022-03-11 18:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,16 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: accounts/admin.py:14 accounts/models.py:16
+#: accounts/admin.py:14 accounts/models.py:57
 #: templates/partials/_header.html:50
 msgid "Consultation"
 msgstr "نص الاستشارة"
+
+#: accounts/apps.py:7
+#, fuzzy
+#| msgid "Accounts"
+msgid "Accounts"
+msgstr "الحسابات"
 
 #: accounts/forms.py:14 accounts/forms.py:82
 msgid "consultation text"
@@ -40,15 +46,15 @@ msgstr "الاسم الاول"
 msgid "Last Name"
 msgstr "الاسم الاخير"
 
-#: accounts/forms.py:76 accounts/forms.py:264 accounts/models.py:65
+#: accounts/forms.py:76 accounts/forms.py:264 accounts/models.py:68
 msgid "Email"
 msgstr "الإيميل"
 
-#: accounts/forms.py:77 accounts/models.py:69
+#: accounts/forms.py:77 accounts/models.py:72
 msgid "age"
 msgstr "العمر"
 
-#: accounts/forms.py:79 accounts/models.py:73
+#: accounts/forms.py:79 accounts/models.py:76
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
@@ -64,15 +70,19 @@ msgstr "تأكيد كلمة السر"
 msgid "captcha"
 msgstr "رمز التحقق"
 
-#: accounts/models.py:31 accounts/models.py:77
+#: accounts/models.py:30 accounts/models.py:80
 msgid "Is Approved"
 msgstr "هل تمت الموافقة"
 
-#: accounts/models.py:61
+#: accounts/models.py:58 templates/hospital/consultation.html:9
+msgid "Consultations"
+msgstr "نص الاستشارة"
+
+#: accounts/models.py:64
 msgid "role"
 msgstr "الدور"
 
-#: accounts/models.py:64
+#: accounts/models.py:67
 msgid "gender"
 msgstr "الجنس"
 
@@ -84,13 +94,17 @@ msgstr "en"
 msgid "Arabic"
 msgstr "عربي"
 
+#: hospital/apps.py:6
+
+#| msgid "Tishreen Hospital"
+msgid "Hospitals"
+msgstr "مستشفى "
+
 #: hospital/models.py:15
 msgid "Slider"
 msgstr "سلايدر"
 
 #: hospital/models.py:16
-
-#| msgid "Slider"
 msgid "Sliders"
 msgstr "سلايدر"
 
@@ -104,7 +118,6 @@ msgid "Item"
 msgstr "العنصر"
 
 #: hospital/models.py:49
-#| msgid "Item"
 msgid "Items"
 msgstr "العنصر"
 
@@ -125,8 +138,6 @@ msgid "Gallery"
 msgstr "صالة عرض"
 
 #: hospital/models.py:96
-
-#| msgid "Gallery"
 msgid "Galleries"
 msgstr "صالة عرض"
 
@@ -211,15 +222,7 @@ msgstr "تسجيل الدخول للمريض"
 msgid "Heart Care | Heart Hospital"
 msgstr "العناية بالقلب | مستشفى القلب"
 
-#: templates/hospital/consultation.html:9
-
-#| msgid "consultation text"
-msgid "Consultations"
-msgstr "نص الاستشارة"
-
 #: templates/hospital/consultation.html:14
-
-#| msgid "consultation text"
 msgid "Ask for Consultations"
 msgstr "نص الاستشارة"
 

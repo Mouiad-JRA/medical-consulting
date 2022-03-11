@@ -13,7 +13,6 @@ GENDER_CHOICES = (
 
 
 class Consultation(models.Model):
-    verbose_name = _('Consultation')
     ANSWERED = "answered"
     ONHOLD = "hold"
 
@@ -53,6 +52,10 @@ class Consultation(models.Model):
         email.to = to
         email.content_subtype = "html"
         email.send()
+
+    class Meta:
+        verbose_name = _('Consultation')
+        verbose_name_plural = _('Consultations')
 
 
 class User(AbstractUser):
