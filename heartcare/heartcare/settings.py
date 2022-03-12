@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*","medical-consulting.herokuapp.com"]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
