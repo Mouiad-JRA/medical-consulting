@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.shortcuts import redirect
-from django.conf.urls import url
-from django.urls import reverse
+from django.urls import reverse, re_path
 from django.utils.translation import gettext_lazy as _
 from .models import User, Consultation
 from django.utils.html import format_html
@@ -43,7 +42,7 @@ class ConsultationAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super(ConsultationAdmin, self).get_urls()
         custom_urls = [
-            url(
+            re_path(
                 r"^(?P<pk>[0-9]+)/send-account-activation-mail/$",
                 self.admin_site.admin_view(self.send_activation_email),
                 name="candidate-activate",
