@@ -2,7 +2,13 @@
  {% get_current_language as LANGUAGE_CODE %}
   {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
+<script>
 
+    	function basicPopup(url) {
+popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
+	}
+
+</script>
 <header class="site-header">
 
   <div class="top-bar">
@@ -37,7 +43,7 @@
                   class="icon-bar"></span> </button>
               <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'heartcare/images/logo.png' %}"
                   alt=""></a> </div>
-
+              <button type="button" class="btn btn-danger" onclick=" basicPopup({% url 'mws' %});">{% trans "Click to show students NAME" %}</button>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
