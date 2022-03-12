@@ -14,6 +14,7 @@ urlpatterns = i18n_patterns(
     path('', include('hospital.urls')),
     path('appointment/', include('appointment.urls')),
     path('captcha/', include('captcha.urls')),
+    path("mws/", TemplateView.as_view(template_name="mws.html"), name="404"),
     prefix_default_language=False
 )
 
