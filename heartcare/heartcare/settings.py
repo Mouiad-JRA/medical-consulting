@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'heartcare.urls'
-
+CSRF_TRUSTED_ORIGINS = ['https://medical-test1.herokuapp.com/']
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
