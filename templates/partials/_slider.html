@@ -1,0 +1,17 @@
+{% load static  i18n%}
+<div class="main-slider">
+    <div id="main-slider" class="owl-carousel owl-theme">
+      {% for slider in sliders %}
+      <div class="item">
+          <div class="slide-caption slide-2">
+            <div class="container">
+              <h1>{{ slider.caption }}</h1>
+              <p>{{ slider.slogan }}</p>
+              <a class="btn-1" href="#">{% trans "Call for Inquiry" %}</a> <a class="btn-1" href="#">{% trans "Ask Cardiologist" %}</a>
+            </div>
+          </div>
+          <span class="img" style="height: 100%"><img src="{{ slider.image.url }}" alt=""></span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>

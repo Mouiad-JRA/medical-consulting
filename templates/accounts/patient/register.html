@@ -1,0 +1,147 @@
+{% load static bootstrap i18n%}
+
+<head class="back">
+<title>{% block title %}{% trans 'Patient registration' %}{% endblock %}</title>
+  {% include 'partials/_css.html' %}
+  {% include 'partials/_js.html' %}
+
+    <header class="site-header">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-8">
+          <ul>
+            <li><i class="fa fa-phone" aria-hidden="true"></i> {% trans 'Call at:' %} <strong>+963994350933</strong></li>
+            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> {% trans 'Email us:' %}<strong>mouiad.ali.work@gmail.com</strong>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-sm-4 top-social"> <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#"><i class="fa fa-google-plus"
+              aria-hidden="true"></i></a> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a> <a
+            href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a> </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-logo-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar navbar-default">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle
+                  navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                  class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'heartcare/images/logo.png' %}"
+                  alt=""></a> </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                </li>
+                <li><a href="{% url 'services' %}">{% trans 'Medical topics' %}</a></li>
+{#                <li><a href="{% url 'doctors' %}">Doctors</a></li>#}
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-haspopup="true" aria-expanded="false">{% trans 'Features' %} <span class="fa fa-angle-down"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
+                    <li><a href="{% url 'faqs' %}">{% trans 'Faqs' %}</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
+              </ul>
+
+
+                    {#                <li><a class="appoint" href="{% url 'appointment:doctor-appointment-create' %}">Appointment</a></li>#}
+
+                    <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
+                                                                         alt=""></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+  {% include 'partials/_pagination.html' %}
+  {% include 'partials/_slider.html' %}
+  {% include 'partials/_sidebar.html' %}
+
+
+
+</head>
+
+
+
+
+{% block content %}
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <center> <h3>{% trans 'Registration for patient' %}</h3></center>
+
+                    <form action="" method="POST">{% csrf_token %}
+{#                        {% for field in form %}#}
+{#                    {% if field.name == 'gender' %}#}
+{##}
+{#                        <div class="form-group">#}
+{#                            <label for="gender">Gender</label>#}
+{#                            <br>#}
+{#                            <div class="form-check form-check-inline">#}
+{#                                <input class="form-check-input" type="radio" name="gender" id="male gender"#}
+{#                                       value="male">#}
+{#                                <label class="form-check-label" for="male">Male</label>#}
+{#                            </div>#}
+{#                            <div class="form-check form-check-inline">#}
+{#                                <input class="form-check-input" type="radio" name="gender" id="female"#}
+{#                                       value="female">#}
+{#                                <label class="form-check-label" for="female">Female</label>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% elif field.name == 'captcha' %}#}
+{##}
+{#                        {{ form.captcha }}#}
+{#                    {% else %}#}
+{##}
+{#                        <div class="form-group">#}
+{#                            <label for="id_{{ field.name }}">{{ field.label }}</label>#}
+{#                            <input type="{{ field.field.widget.input_type }}"#}
+{#                                   class="form-control"#}
+{#                                   name="{{ field.name }}"#}
+{#                                   id="id_{{ field.name }}"#}
+{#                                   placeholder="{{ field.field.widget.attrs.placeholder }}">#}
+{#                        </div>#}
+{##}
+{#                          {% endif %}#}
+{##}
+{#                {% endfor %}#}
+{{ form|bootstrap }}
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Register" class="btn btn-primary btn-md text-white">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+{% endblock %}
+
+
