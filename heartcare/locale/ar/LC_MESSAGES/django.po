@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 20:03+0000\n"
+"POT-Creation-Date: 2022-03-12 07:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,6 +138,18 @@ msgstr "صالة عرض"
 #: hospital/models.py:96
 msgid "Galleries"
 msgstr "صالة عرض"
+
+#: templates/404.html:15
+msgid "We are sorry the page that you are looking for does not exist"
+msgstr "اسفون ولكن الصفحة التي تبحث عنها غير موجودة"
+
+#: templates/500.html:12
+msgid "Internal server error"
+msgstr "جدث خطأ في السيرفر، لا علاقة لنا (مؤيد ومازن وميلاد وعبدلله) لا علاقة لنا به"
+
+#: templates/500.html:14
+msgid "Sorry, there seems to be an error. Please try again soon."
+msgstr "عذرا ولكن يوجد مشكلة بالسرفر، ستحل تلقائيا بعد فترة، يرجى المحاولة لاحقا"
 
 #: templates/accounts/doctor/register.html:5
 msgid "Doctor Registration"
