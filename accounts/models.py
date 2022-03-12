@@ -59,7 +59,7 @@ class Consultation(models.Model):
 
 
 class User(AbstractUser):
-
+    # username = None
     role = models.CharField(_('role'),max_length=12, error_messages={
         'required': "Role must be provided"
     })
