@@ -83,7 +83,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["email"]
 
     def __unicode__(self):
-        return self.email
+        return self.username
 
     objects = UserManager()
 
