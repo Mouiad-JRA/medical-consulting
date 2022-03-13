@@ -60,7 +60,7 @@ class Consultation(models.Model):
 
 class User(AbstractUser):
 
-    username = None
+    # username = None
     role = models.CharField(_('role'),max_length=12, error_messages={
         'required': "Role must be provided"
     })
@@ -80,11 +80,11 @@ class User(AbstractUser):
     approved = models.BooleanField(_("Is Approved"), default=False, blank=True)
     consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE, null=True, related_name="user")
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = ["email"]
 
     def __unicode__(self):
-        return self.email
+        return self.username
 
     objects = UserManager()
 
