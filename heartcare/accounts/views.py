@@ -5,8 +5,8 @@ from django.views.generic import CreateView, FormView, RedirectView
 
 
 
-from accounts.forms import *
-from accounts.models import User
+from .forms import *
+from .models import User
 
 
 class RegisterPatientView(CreateView):

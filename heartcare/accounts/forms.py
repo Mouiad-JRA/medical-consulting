@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from captcha.fields import CaptchaField
 
-from accounts.models import User, Consultation
+from .models import User, Consultation
 
 
 class ConsultationForm(forms.ModelForm):

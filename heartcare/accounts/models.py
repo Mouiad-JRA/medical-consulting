@@ -4,7 +4,7 @@ from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
-from accounts.managers import UserManager
+from .managers import UserManager
 
 
 GENDER_CHOICES = (
