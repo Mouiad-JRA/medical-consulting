@@ -180,6 +180,7 @@ class PatientRegistrationForm(UserCreationForm):
 
         user.role = "patient"
         user.consultation = consultation
+        user.username = user.email
         if commit:
             user.save()
         return user
@@ -245,6 +246,7 @@ class DoctorRegistrationForm(UserCreationForm):
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
         user.role = "doctor"
+        user.username = user.email
         if commit:
             user.save()
         return user
