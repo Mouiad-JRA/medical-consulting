@@ -149,7 +149,7 @@ class RegisterPersonView(CreateView):
 
         if form.is_valid():
             Person = form.save(commit=False)
-            real_result_naive = sklearn_algorithm(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
+            real_result_naive = sklearn_algorithm(os.path.abspath("heart_disease_male.csv"), Person.age,
                                                   Person.chest_pain_type, Person.rest_blood_pressure,
                                                   Person.blood_sugar,
                                                   Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
