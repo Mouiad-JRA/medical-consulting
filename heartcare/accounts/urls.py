@@ -8,7 +8,7 @@ app_name = "accounts"
 
 urlpatterns = [
     path('patient/register', RegisterPatientView.as_view(), name='patient-register'),
-    path('person/', RegisterPersonView.as_view(), name='person-register'),
+    path('person/', RegisterPersonView.as_view(), name='person'),
     # path('patient/profile/update/', EditPatientProfileView.as_view(), name='patient-profile-update'),
     path('doctor/register', RegisterDoctorView.as_view(), name='doctor-register'),
     # path('doctor/profile/update/', EditDoctorProfileView.as_view(), name='doctor-profile-update'),

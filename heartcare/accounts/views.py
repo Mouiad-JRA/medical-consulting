@@ -151,11 +151,12 @@ class RegisterPersonView(CreateView):
             result = sklearn_algorithm(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
                                        Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
                                        Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            # result1 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"), Person.age,
-            #                            Person.chest_pain_type, Person.rest_blood_pressure, Person.rest_blood_pressure,
-            #                            Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            print(result)
-            # print(result1)
-            return render(request, 'accounts/results.html', {'result': result})
+            result1 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"),
+                                                     Person.age,
+                                                     Person.chest_pain_type, Person.rest_blood_pressure,
+                                                     Person.rest_blood_pressure,
+                                                     Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+
+            return render(request, 'accounts/results.html', {"result": result1, "res":result})
         else:
             return render(request, 'accounts/patient/register.html', {'form': form})

@@ -3,6 +3,7 @@ import math
 import random
 import csv
 
+
 def encode_class(mydata):
     classes = []
     for i in range(len(mydata)):
@@ -13,6 +14,7 @@ def encode_class(mydata):
             if mydata[j][-1] == classes[i]:
                 mydata[j][-1] = i
     return mydata
+
 
 def splitting(mydata, ratio):
     train_num = int(len(mydata) * ratio)
@@ -47,6 +49,7 @@ def MeanAndStdDev(mydata):
     info = [(mean(attribute), std_dev(attribute)) for attribute in zip(*mydata)]
     del info[-1]
     return info
+
 
 def MeanAndStdDevForClass(mydata):
     info = {}
@@ -98,28 +101,9 @@ def accuracy_rate(test, predictions):
     return (correct / float(len(test))) * 100.0
 
 
-# filename = r'heart_disease_handled_male.csv'
-#
-# mydata = csv.reader(open(filename, "rt"))
-# mydata = list(mydata)
-# mydata = encode_class(mydata)
-# for i in range(len(mydata)):
-#     mydata[i] = [float(x) for x in mydata[i]]
-#
-# ratio = 0.7
-# train_data, test_data = splitting(mydata, ratio)
-# print('Total number of examples are: ', len(mydata))
-# print('Out of these, training examples are: ', len(train_data))
-# print("Test examples are: ", len(test_data))
-#
-# info = MeanAndStdDevForClass(train_data)
-
-# test model
-
-def sklearn_algorithm_from_scratch(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, rest_electro, max_heart_rate,
-                      exercice_angina):
-    # filename = r'heart_disease_handled_male.csv'
-
+def sklearn_algorithm_from_scratch(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, rest_electro,
+                                   max_heart_rate,
+                                   exercice_angina):
     mydata = csv.reader(open(dataset, "rt"))
     mydata = list(mydata)
     mydata = encode_class(mydata)
@@ -133,31 +117,31 @@ def sklearn_algorithm_from_scratch(dataset, age, chest_pain_type, rest_blood_pre
     print("Test examples are: ", len(test_data))
 
     info = MeanAndStdDevForClass(train_data)
-    if(chest_pain_type=='asympt'):
+    if (chest_pain_type == 'asympt'):
         cpt = 0
-    elif (chest_pain_type=='atyp_angina'):
+    elif (chest_pain_type == 'atyp_angina'):
         cpt = 1
-    elif (chest_pain_type=='non_anginal'):
+    elif (chest_pain_type == 'non_anginal'):
         cpt = 2
 
-    if (blood_sugar==False):
-        bs= 0
+    if (blood_sugar == False):
+        bs = 0
     elif (blood_sugar):
-        bs =1
+        bs = 1
 
-    if (rest_electro=='normal'):
+    if (rest_electro == 'normal'):
         re = 2
-    elif (rest_electro=='left_vent_hyper'):
+    elif (rest_electro == 'left_vent_hyper'):
         re = 1
-    elif (rest_electro=='st_t_wave_abnormality'):
+    elif (rest_electro == 'st_t_wave_abnormality'):
         re = 3
 
     if (exercice_angina):
-        ea= 1
-    elif (exercice_angina==False):
-        ea= 0
+        ea = 1
+    elif (exercice_angina == False):
+        ea = 0
 
     patient = [[age, cpt, rest_blood_pressure, bs, re, max_heart_rate, ea]]
     predictions_for_one_sample = getPredictions(info, patient)
     print("The predictions is: ", predictions_for_one_sample)
-    return  predictions_for_one_sample
+    return predictions_for_one_sample[0]
