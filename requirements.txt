@@ -12,3 +12,4 @@ matplotlib
 seaborn
 pandas_profiling
 plotly
+sklearn
