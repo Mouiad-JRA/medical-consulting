@@ -9,6 +9,7 @@ from django.views.generic import CreateView, FormView, RedirectView
 from .bayes import sklearn_algorithm
 from .bayes_hard import sklearn_algorithm_from_scratch
 from .forms import *
+from .id3_real import id3_hard
 from .models import User
 
 
@@ -148,15 +149,29 @@ class RegisterPersonView(CreateView):
 
         if form.is_valid():
             Person = form.save(commit=False)
-            result = sklearn_algorithm(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
+            real_result_naive = sklearn_algorithm(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
+                                                  Person.chest_pain_type, Person.rest_blood_pressure,
+                                                  Person.blood_sugar,
+                                                  Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            fake_result_naive = sklearn_algorithm_from_scratch(
+                os.path.abspath("accounts/heart_disease_handled_male.csv"),
+                Person.age,
+                Person.chest_pain_type, Person.rest_blood_pressure,
+                Person.rest_blood_pressure,
+                Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            real_result_id3 = id3_hard(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
                                        Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
                                        Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            result1 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"),
-                                                     Person.age,
-                                                     Person.chest_pain_type, Person.rest_blood_pressure,
-                                                     Person.rest_blood_pressure,
-                                                     Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            # fake_result_id3 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"),
+            #                                          Person.age,
+            #                                          Person.chest_pain_type, Person.rest_blood_pressure,
+            #                                          Person.rest_blood_pressure,
+            #                                          Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
 
-            return render(request, 'accounts/results.html', {"result": result1, "res":result})
+            return render(request, 'accounts/results.html',
+                          {"fake_result_naive": fake_result_naive,
+                           "real_result_naive": real_result_naive,
+                           "real_result_id3": real_result_id3
+                           })
         else:
             return render(request, 'accounts/patient/register.html', {'form': form})

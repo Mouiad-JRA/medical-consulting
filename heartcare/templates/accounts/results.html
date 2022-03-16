@@ -19,21 +19,40 @@
 
 </head>
 <body>
-<h1>The coded Naive Bayes Algorithm Results</h1>
-{% if result == 0 %}
-    <h2>The result is negative which mean that the person doesn't have any heart issue </h2>
-{% elif result == 1 %}
+<h1>Naive Bayes hard coded Algorithm Results</h1>
+{% if fake_result_naive == 0 %}
+    <h2>The result of Naive Bayes hard coded Algorithm is negative which mean that the person doesn't have any heart
+        issue </h2>
+{% elif fake_result_naive == 1 %}
     <h1 style="color:#bf0311">Danger! Danger!</h1>
-    <h3>The result is positive which mean that the person dose have a heart issue, please take a doctor consulting on
+    <h3>The result of Naive Bayes hard coded Algorithm is positive which mean that the person dose have a heart issue,
+        please take a doctor consulting on
         our site </h3>
 {% endif %}
-<h1>Lets see the real Result</h1>
+<h1>Lets see the real Result For Naive Bayes Algorithm </h1>
 <h2>The Sklearn Naive Bayes Algorithm Results</h2>
-{% if res == 0 %}
-    <h2>The result is negative which mean that the person doesn't have any heart issue </h2>
-{% elif res == 1 %}
+{% if real_result_naive == 0 %}
+    <h2>The result of Sklearn Naive Bayes Algorithm is negative which mean that the person doesn't have any heart
+        issue </h2>
+{% elif real_result_naive == 1 %}
     <h1 style="color:#bf0311">Danger! Danger!</h1>
-    <h3>The result is positive which mean that the person dose have a heart issue, please take a doctor consulting on
+    <h3>The result of Sklearn Naive Bayes Algorithm is positive which mean that the person dose have a heart issue,
+        please take a doctor consulting on
+        our site </h3>
+    <a href="{% url 'accounts:login' %}">
+        <button type="login" name="take a consultation" style='margin-right: 500px'
+                class="btn btn-danger btn-md text-white">take a consultation now
+        </button>
+    </a>
+{% endif %}
+
+{% if real_result_id3 == 0 %}
+    <h2>The result of ID3 Algorithm is negative which mean that the person doesn't have any heart issue </h2>
+{% elif real_result_id3 == 1 %}
+    <h1>Lets see the real Result For Naive Bayes Algorithm </h1>
+    <h1 style="color:#bf0311">Danger! Danger!</h1>
+    <h3>The result of ID3 Algorithm is is positive which mean that the person dose have a heart issue, please take a
+        doctor consulting on
         our site </h3>
     <a href="{% url 'accounts:login' %}">
         <button type="login" name="take a consultation" style='margin-right: 500px'
