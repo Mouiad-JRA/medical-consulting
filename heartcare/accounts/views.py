@@ -1,10 +1,13 @@
+import os
+
 from django.contrib import messages, auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import CreateView, FormView, RedirectView
 
-
-
+from .bayes import sklearn_algorithm
+from .bayes_hard import sklearn_algorithm_from_scratch
 from .forms import *
 from .models import User
 
@@ -30,7 +33,6 @@ class RegisterPatientView(CreateView):
     def post(self, request, *args, **kwargs):
 
         form = self.form_class(data=request.POST)
-
 
         if form.is_valid():
 
@@ -120,3 +122,40 @@ class LogoutView(RedirectView):
         auth.logout(request)
         messages.success(request, 'You are now logged out from our site (Mouiad, Mazen, Milad and Abdullah) :)')
         return super(LogoutView, self).get(request, *args, **kwargs)
+
+
+class RegisterPersonView(CreateView):
+    """
+        Provides the ability to register as a Patient.
+    """
+    model = Person
+    form_class = PersonForm
+    template_name = 'accounts/heartHealth.html'
+    success_url = '/'
+
+    extra_context = {
+        'title': 'Check'
+    }
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        return super().dispatch(self.request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+
+        form = self.form_class(data=request.POST)
+
+        if form.is_valid():
+            Person = form.save(commit=False)
+            result = sklearn_algorithm(os.path.abspath("accounts/heart_disease_male.csv"), Person.age,
+                                       Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
+                                       Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            # result1 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"), Person.age,
+            #                            Person.chest_pain_type, Person.rest_blood_pressure, Person.rest_blood_pressure,
+            #                            Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            print(result)
+            # print(result1)
+            return render(request, 'accounts/results.html', {'result': result})
+        else:
+            return render(request, 'accounts/patient/register.html', {'form': form})

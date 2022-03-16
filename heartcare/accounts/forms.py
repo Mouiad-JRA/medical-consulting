@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from captcha.fields import CaptchaField
 
-from .models import User, Consultation
+from .models import User, Consultation, Person
 
 
 class ConsultationForm(forms.ModelForm):
@@ -345,3 +345,70 @@ class DoctorProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "email"]
+
+
+class PersonForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['age'].label = _("age")
+        self.fields['chest_pain_type'].label = _("chest pain type")
+        self.fields['rest_electro'].label = _("rest electro")
+        self.fields['rest_blood_pressure'].label = _("rest blood pressure")
+        self.fields['max_heart_rate'].label = _("max heart rate")
+        self.fields['blood_sugar'].label = _("blood sugar")
+        self.fields['exercice_angina'].label = _("exercice angina")
+        self.fields['chest_pain_type'].widget.attrs.update(
+            {
+                'placeholder': 'Choose chest pain type',
+            }
+        )
+        self.fields['rest_electro'].widget.attrs.update(
+            {
+                'placeholder': 'Choose rest electro',
+            }
+        )
+        self.fields['rest_blood_pressure'].widget.attrs.update(
+            {
+                'placeholder': 'Enter rest blood pressure',
+            }
+        )
+        self.fields['max_heart_rate'].widget.attrs.update(
+            {
+                'placeholder': 'Enter max heart rate',
+            }
+        )
+        self.fields['blood_sugar'].widget.attrs.update(
+            {
+                'placeholder': 'Enter blood sugar',
+            }
+        )
+        self.fields['exercice_angina'].widget.attrs.update(
+            {
+                'placeholder': 'Enter exercice angina',
+            }
+        )
+        self.fields['age'].widget.attrs.update(
+            {
+                'placeholder': 'Enter Age',
+            }
+        )
+
+    class Meta:
+        model = Person
+
+        fields = ['age', 'exercice_angina', 'blood_sugar', 'max_heart_rate', 'rest_blood_pressure', 'rest_electro', 'chest_pain_type',
+                 ]
+        error_messages = {
+            'age': {
+                'required': 'age is required'
+            },
+        }
+
+    def save(self, commit=True):
+        person = super(PersonForm, self).save(commit=False)
+        if commit:
+            person.save()
+        return person
+
+

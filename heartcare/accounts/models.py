@@ -6,10 +6,21 @@ from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 from .managers import UserManager
 
-
 GENDER_CHOICES = (
     ('male', 'Male'),
     ('female', 'Female'))
+
+CHEST_PAIN_CHOICES = (
+    ('asympt', 'Asympt'),
+    ('atyp_angina', 'Atyp_angina'),
+    ('non_anginal', 'Non_anginal')
+)
+
+REST_ELECTRO_CHOICES = (
+    ('normal', 'Normal'),
+    ('left_vent_hyper', 'Left_vent_hyper'),
+    ('st_t_wave_abnormality', 'St_t_wave_abnormality')
+)
 
 
 class Consultation(models.Model):
@@ -60,19 +71,19 @@ class Consultation(models.Model):
 
 class User(AbstractUser):
     # username = None
-    role = models.CharField(_('role'),max_length=12, error_messages={
+    role = models.CharField(_('role'), max_length=12, error_messages={
         'required': "Role must be provided"
     })
-    gender = models.CharField(_('gender'),max_length=10, blank=False, null=True,choices=GENDER_CHOICES, default="")
-    email = models.EmailField(_('Email'),unique=True, blank=False, null=True,
+    gender = models.CharField(_('gender'), max_length=10, blank=False, null=True, choices=GENDER_CHOICES, default="")
+    email = models.EmailField(_('Email'), unique=True, blank=False, null=True,
                               error_messages={
                                   'unique': "A user with that email already exists.",
                               })
-    age = models.PositiveIntegerField(_('age'),blank=False,null=True,
-                              error_messages={
-                                  'Negative integer': "Please enter a Valid age",
-                              })
-    phone_number = models.CharField(_('Phone Number'),unique=True, blank=True, null=True, max_length=20,
+    age = models.PositiveIntegerField(_('age'), blank=False, null=True,
+                                      error_messages={
+                                          'Negative integer': "Please enter a Valid age",
+                                      })
+    phone_number = models.CharField(_('Phone Number'), unique=True, blank=True, null=True, max_length=20,
                                     error_messages={
                                         'unique': "A user with that phone number already exists."
                                     })
@@ -88,3 +99,22 @@ class User(AbstractUser):
     objects = UserManager()
 
 
+class Person(models.Model):
+    age = models.PositiveIntegerField(_('age'), blank=False, null=True,
+                                      error_messages={
+                                          'Negative integer': "Please enter a Valid age",
+                                      })
+    chest_pain_type = models.CharField(_('chest pain'), max_length=20, blank=False, null=True,
+                                       choices=CHEST_PAIN_CHOICES, default="")
+    rest_electro = models.CharField(_('rest electro'), max_length=22, blank=False, null=True,
+                                    choices=REST_ELECTRO_CHOICES, default="")
+    rest_blood_pressure = models.PositiveIntegerField(_('rest blood pressure'), blank=False, null=True,
+                                                      error_messages={
+                                                          'Negative integer': "Please enter a Valid age",
+                                                      })
+    max_heart_rate = models.PositiveIntegerField(_('max heart rate'), blank=False, null=True,
+                                                 error_messages={
+                                                     'Negative integer': "Please enter a Valid age",
+                                                 })
+    blood_sugar = models.BooleanField(_("blood sugar"), default=False, blank=True)
+    exercice_angina = models.BooleanField(_("exercice angina"), default=False, blank=True)

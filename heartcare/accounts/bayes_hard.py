@@ -98,27 +98,66 @@ def accuracy_rate(test, predictions):
     return (correct / float(len(test))) * 100.0
 
 
-filename = r'heart_disease_handled_male.csv'
-
-mydata = csv.reader(open(filename, "rt"))
-mydata = list(mydata)
-mydata = encode_class(mydata)
-for i in range(len(mydata)):
-    mydata[i] = [float(x) for x in mydata[i]]
-
-ratio = 0.7
-train_data, test_data = splitting(mydata, ratio)
-print('Total number of examples are: ', len(mydata))
-print('Out of these, training examples are: ', len(train_data))
-print("Test examples are: ", len(test_data))
-
-info = MeanAndStdDevForClass(train_data)
+# filename = r'heart_disease_handled_male.csv'
+#
+# mydata = csv.reader(open(filename, "rt"))
+# mydata = list(mydata)
+# mydata = encode_class(mydata)
+# for i in range(len(mydata)):
+#     mydata[i] = [float(x) for x in mydata[i]]
+#
+# ratio = 0.7
+# train_data, test_data = splitting(mydata, ratio)
+# print('Total number of examples are: ', len(mydata))
+# print('Out of these, training examples are: ', len(train_data))
+# print("Test examples are: ", len(test_data))
+#
+# info = MeanAndStdDevForClass(train_data)
 
 # test model
-patient1 = [[54,0,150,0,3,134,0,0]]
-patient = [[49.0, 0.0, 140.0, 0.0, 2.0, 130.0, 0.0, 1.0]]
-predictions = getPredictions(info, test_data)
-predictions_for_one_sample = getPredictions(info, patient)
-accuracy = accuracy_rate(test_data, predictions)
-# print("Accuracy of Our model is: ", predictions)
-print("The predictions is: ", predictions_for_one_sample)
+
+def sklearn_algorithm_from_scratch(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, rest_electro, max_heart_rate,
+                      exercice_angina):
+    # filename = r'heart_disease_handled_male.csv'
+
+    mydata = csv.reader(open(dataset, "rt"))
+    mydata = list(mydata)
+    mydata = encode_class(mydata)
+    for i in range(len(mydata)):
+        mydata[i] = [float(x) for x in mydata[i]]
+
+    ratio = 0.7
+    train_data, test_data = splitting(mydata, ratio)
+    print('Total number of examples are: ', len(mydata))
+    print('Out of these, training examples are: ', len(train_data))
+    print("Test examples are: ", len(test_data))
+
+    info = MeanAndStdDevForClass(train_data)
+    if(chest_pain_type=='asympt'):
+        cpt = 0
+    elif (chest_pain_type=='atyp_angina'):
+        cpt = 1
+    elif (chest_pain_type=='non_anginal'):
+        cpt = 2
+
+    if (blood_sugar==False):
+        bs= 0
+    elif (blood_sugar):
+        bs =1
+
+    if (rest_electro=='normal'):
+        re = 2
+    elif (rest_electro=='left_vent_hyper'):
+        re = 1
+    elif (rest_electro=='st_t_wave_abnormality'):
+        re = 3
+
+    if (exercice_angina):
+        ea= 1
+    elif (exercice_angina==False):
+        ea= 0
+
+    patient = [[age, cpt, rest_blood_pressure, bs, re, max_heart_rate, ea]]
+    predictions_for_one_sample = getPredictions(info, patient)
+    print("The predictions is: ", predictions_for_one_sample)
+    return  predictions_for_one_sample
