@@ -606,11 +606,11 @@ msgstr "العناية بالقلب"
 
 #: templates/partials/_footer.html:64
 msgid ""
-"All Rights Reserved & Developed By Mouiad Ali, Mazen Souda, Milad Awad and "
-"Abdullah Ghazel"
+"Reserved & Developed By Mouiad, Mazen, Milad and Abdullah"
+
 msgstr ""
-"جميع الحقوق محفوظة، تم التطوير من قبل مؤيد علي، مازن سودا ، ميلاد عواد "
-"وعبدلله غزيل"
+"جميع الحقوق محفوظة، تم التطوير من قبل مؤيد وميلاد ومازن وعبدلله "
+
 
 #: templates/partials/_header.html:60
 msgid "Language"
