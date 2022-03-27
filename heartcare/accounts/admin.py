@@ -50,6 +50,7 @@ class ConsultationAdmin(admin.ModelAdmin):
         ]
         return custom_urls + urls
 
+
     def send_activation_email(self, request, pk, *args, **kwargs):
         consultation = Consultation.objects.get(pk=pk)
         print(consultation.reply)
