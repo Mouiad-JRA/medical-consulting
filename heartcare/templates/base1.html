@@ -1,6 +1,9 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI%}
 <!DOCTYPE html>
-<html lang="en">
+<html  {% if LANGUAGE_BIDI %} style="direction: rtl ;font-family: 'Montserrat', sans-serif"{% endif %} lang="{{ LANGUAGE_CODE }}" class="{% if LANGUAGE_CODE == 'ar' %}ar {% endif %} ">
+
 
 <head>
   <meta charset="UTF-8">

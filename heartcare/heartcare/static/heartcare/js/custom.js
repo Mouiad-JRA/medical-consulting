@@ -6,6 +6,7 @@ $(document).ready(function () {
         $('#main-slider').owlCarousel({
             loop: true,
             nav: false,
+            rtl: true,
             responsive: {
                 0: {
                     items: 1
@@ -23,6 +24,8 @@ $(document).ready(function () {
     if ($('#testimonial-slider').length) {
         $('#testimonial-slider').owlCarousel({
             loop: true,
+            rtl: true,
+
             nav: false,
             responsive: {
                 0: {
@@ -50,6 +53,8 @@ $(document).ready(function () {
         $('#team-slider').owlCarousel({
             loop: true,
             nav: false,
+            rtl: true,
+
             margin: 30,
             responsive: {
                 0: {
@@ -70,6 +75,8 @@ $(document).ready(function () {
             loop: true,
             nav: false,
             margin: 30,
+            rtl: true,
+
             responsive: {
                 0: {
                     items: 1
@@ -137,6 +144,7 @@ $(document).ready(function () {
             }, 50);
         }
     }
+
     if ($('.stat-count').length) {
         $(".stat-count").each(function () {
             $(this).data('count', parseInt($(this).html(), 10));

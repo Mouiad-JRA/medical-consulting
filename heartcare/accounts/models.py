@@ -44,22 +44,21 @@ class Consultation(models.Model):
 
     def is_answered(self):
         if self.status == "answered":
-            print("m")
             return True
         return False
 
     def is_onhold(self):
         if self.status == "hold":
-            print("c")
             return True
         return False
 
     def _send_email(self, context=None, subject="", template_path=None, to=None):
         context = context
         context.update({"site": Site.objects.get_current()})
+
         email = EmailMessage()
         email.subject = subject
-        email.body = render_to_string(template_path, context)
+        email.body = render_to_string(template_path, context=context)
         email.to = to
         email.content_subtype = "html"
         email.send()

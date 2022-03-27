@@ -53,8 +53,8 @@ class ConsultationAdmin(admin.ModelAdmin):
     def send_activation_email(self, request, pk, *args, **kwargs):
         consultation = Consultation.objects.get(pk=pk)
         print(consultation.reply)
-        context = {"Reply": consultation.reply}
-        subject = consultation.reply
+        context = {"reply": consultation.reply}
+        subject = 'Your Doctor consultation'
         consultation._send_email(
             context=context,
             subject=subject,
@@ -72,15 +72,11 @@ class ConsultationAdmin(admin.ModelAdmin):
         return obj.filter(status=Consultation.ANSWERED).exists()
 
     def account_actions(self, obj):
-        print(obj.user.get())
-        print("momo0")
         if obj.approved:
-            print("momo2")
             return format_html(
                 "<p>Reply has been sent</p>",
             )
-        if obj.status != obj.is_onhold:
-            print("momo3")
+        if not obj.is_onhold():
             return format_html(
                 '<a class="button" href="{}">Send email</a>&nbsp;',
                 reverse("admin:candidate-activate", args=[obj.pk]),

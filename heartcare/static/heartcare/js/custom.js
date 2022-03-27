@@ -6,6 +6,7 @@ $(document).ready(function () {
         $('#main-slider').owlCarousel({
             loop: true,
             nav: false,
+            rtl: true,
             responsive: {
                 0: {
                     items: 1
@@ -24,6 +25,7 @@ $(document).ready(function () {
         $('#testimonial-slider').owlCarousel({
             loop: true,
             nav: false,
+            rtl: true,
             responsive: {
                 0: {
                     items: 1
@@ -51,6 +53,7 @@ $(document).ready(function () {
             loop: true,
             nav: false,
             margin: 30,
+            rtl: true,
             responsive: {
                 0: {
                     items: 1
@@ -70,6 +73,7 @@ $(document).ready(function () {
             loop: true,
             nav: false,
             margin: 30,
+            rtl: true,
             responsive: {
                 0: {
                     items: 1
