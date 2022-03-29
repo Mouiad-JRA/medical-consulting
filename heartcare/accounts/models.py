@@ -17,9 +17,9 @@ CHEST_PAIN_CHOICES = (
 )
 
 REST_ELECTRO_CHOICES = (
-    ('normal', 'Normal'),
-    ('left_vent_hyper', 'Left_vent_hyper'),
-    ('st_t_wave_abnormality', 'St_t_wave_abnormality')
+    ('normal', _('Normal')),
+    ('left_vent_hyper', _('Left_vent_hyper')),
+    ('st_t_wave_abnormality', _('St_t_wave_abnormality'))
 )
 
 

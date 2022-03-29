@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Heart health</title>
+    <title>{% trans 'Heart health' %}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -16,7 +16,7 @@
 <div class="container">
 
     <body class="form-group">
-        <h1>welcome to Heart health website</h1>
+        <h1>{% trans 'welcome to Heart health website' %}</h1>
 
             <form action="" method="POST">{% csrf_token %}
 
@@ -31,7 +31,7 @@
 
 
         </form>
-        <p id="d1">Your result will appear here after submitting</p>
+        <p id="d1">{% trans 'Your result will appear here after submitting' %}</p>
     </body>
 
 </div>

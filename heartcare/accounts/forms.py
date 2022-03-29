@@ -360,37 +360,37 @@ class PersonForm(forms.ModelForm):
         self.fields['exercice_angina'].label = _("exercice angina")
         self.fields['chest_pain_type'].widget.attrs.update(
             {
-                'placeholder': 'Choose chest pain type',
+                'placeholder': _('Choose chest pain type'),
             }
         )
         self.fields['rest_electro'].widget.attrs.update(
             {
-                'placeholder': 'Choose rest electro',
+                'placeholder': _('Choose rest electro'),
             }
         )
         self.fields['rest_blood_pressure'].widget.attrs.update(
             {
-                'placeholder': 'Enter rest blood pressure',
+                'placeholder': _('Enter rest blood pressure'),
             }
         )
         self.fields['max_heart_rate'].widget.attrs.update(
             {
-                'placeholder': 'Enter max heart rate',
+                'placeholder': _('Enter max heart rate'),
             }
         )
         self.fields['blood_sugar'].widget.attrs.update(
             {
-                'placeholder': 'Enter blood sugar',
+                'placeholder': _('Enter blood sugar'),
             }
         )
         self.fields['exercice_angina'].widget.attrs.update(
             {
-                'placeholder': 'Enter exercice angina',
+                'placeholder': _('Enter exercice angina'),
             }
         )
         self.fields['age'].widget.attrs.update(
             {
-                'placeholder': 'Enter Age',
+                'placeholder': _('Enter Age'),
             }
         )
 

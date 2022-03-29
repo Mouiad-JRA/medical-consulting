@@ -2,6 +2,7 @@
  {% get_current_language as LANGUAGE_CODE %}
   {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
+{% get_current_language_bidi as LANGUAGE_BIDI%}
 <script>
 
     	function basicPopup(url) {
@@ -43,8 +44,8 @@ popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top
                   class="icon-bar"></span> </button>
               <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'heartcare/images/logo.png' %}"
                   alt=""></a> </div>
-              <button type="button" class="btn btn-danger" onclick="basicPopup('{% url 'mws' %}');">{% trans "Click to show students NAME" %}</button>
-              <a href=" {% url 'accounts:person' %}"><button type="button" class="btn btn-success" >{% trans "Check if you have a heart issue" %}</button></a>
+              <button {% if LANGUAGE_BIDI %}style='direction: rtl' {% endif %} type="button" class="btn btn-danger" onclick="basicPopup('{% url 'mws' %}');">{% trans "Click to show students name" %}</button>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
@@ -56,6 +57,7 @@ popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top
                   <ul class="dropdown-menu">
                     <li><a href="{% url 'gallery' %}">{% trans "Gallery" %}</a></li>
                     <li><a href="{% url 'faqs' %}">{% trans "Faqs" %}</a></li>
+                      <li>              <a href=" {% url 'accounts:person' %}">{% trans "Check if you have a heart issue" %}</a></li>
                   </ul>
                 </li>
 
