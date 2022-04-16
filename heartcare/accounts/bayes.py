@@ -1,7 +1,10 @@
+from sklearn.metrics import precision_recall_fscore_support as score
+from sklearn.metrics import accuracy_score
 
 
 def sklearn_algorithm(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, rest_electro, max_heart_rate,
                       exercice_angina):
+    global cpt, bs, re, ea
     import pandas as pd
 
     df = pd.read_csv(dataset)
@@ -24,29 +27,29 @@ def sklearn_algorithm(dataset, age, chest_pain_type, rest_blood_pressure, blood_
     print('X')
     y = df.iloc[:, -1]
     y.head()
-    if(chest_pain_type=='asympt'):
+    if chest_pain_type == 'asympt':
         cpt = 0
-    elif (chest_pain_type=='atyp_angina'):
+    elif chest_pain_type == 'atyp_angina':
         cpt = 1
-    elif (chest_pain_type=='non_anginal'):
+    elif chest_pain_type == 'non_anginal':
         cpt = 2
 
-    if (blood_sugar==False):
-        bs= 0
-    elif (blood_sugar):
-        bs =1
+    if not blood_sugar:
+        bs = 0
+    elif blood_sugar:
+        bs = 1
 
-    if (rest_electro=='normal'):
+    if rest_electro == 'normal':
         re = 2
-    elif (rest_electro=='left_vent_hyper'):
+    elif rest_electro == 'left_vent_hyper':
         re = 1
-    elif (rest_electro=='st_t_wave_abnormality'):
+    elif rest_electro == 'st_t_wave_abnormality':
         re = 3
 
-    if (exercice_angina):
-        ea= 1
-    elif (exercice_angina==False):
-        ea= 0
+    if exercice_angina:
+        ea = 1
+    elif not exercice_angina:
+        ea = 0
 
     patient = [[age, cpt, rest_blood_pressure, bs, re, max_heart_rate, ea]]
 
@@ -68,7 +71,11 @@ def sklearn_algorithm(dataset, age, chest_pain_type, rest_blood_pressure, blood_
     classifier.fit(X_train, y_train)
     p = scaler.transform(patient)
     y_pred = classifier.predict(p)
-
-
-    return y_pred[0]
-
+    yy_pred = classifier.predict(X_test)
+    precision, recall, fscore, support = score(y_test, yy_pred, average='macro')
+    accuracy = accuracy_score(y_test, yy_pred)
+    print('Precision : {}'.format(precision))
+    print('Recall    : {}'.format(recall))
+    print('F-score   : {}'.format(fscore))
+    print('Accuracy   : {}'.format(accuracy))
+    return y_pred[0], accuracy, precision, recall, fscore

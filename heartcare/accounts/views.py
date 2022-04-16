@@ -149,29 +149,28 @@ class RegisterPersonView(CreateView):
 
         if form.is_valid():
             Person = form.save(commit=False)
-            real_result_naive = sklearn_algorithm(os.path.abspath("heartcare/accounts/heart_disease_male.csv"), Person.age,
-                                                  Person.chest_pain_type, Person.rest_blood_pressure,
-                                                  Person.blood_sugar,
-                                                  Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            pred, accuracy, precision, recall, fscore = sklearn_algorithm(
+                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                Person.chest_pain_type, Person.rest_blood_pressure,
+                Person.blood_sugar,
+                Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
             fake_result_naive = sklearn_algorithm_from_scratch(
-                os.path.abspath("heartcare/accounts/heart_disease_handled_male.csv"),
+                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_handled_male.csv"),
                 Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure,
                 Person.rest_blood_pressure,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            real_result_id3 = id3_hard(os.path.abspath("heartcare/accounts/heart_disease_male.csv"), Person.age,
-                                       Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
-                                       Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            # fake_result_id3 = sklearn_algorithm_from_scratch(os.path.abspath("accounts/heart_disease_handled_male.csv"),
-            #                                          Person.age,
-            #                                          Person.chest_pain_type, Person.rest_blood_pressure,
-            #                                          Person.rest_blood_pressure,
-            #                                          Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            real_result_id3 = id3_hard(
+                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
+                Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            # fake_result_id3 = sklearn_algorithm_from_scratch(os.path.abspath(
+            # "accounts/heart_disease_handled_male.csv"), Person.age, Person.chest_pain_type,
+            # Person.rest_blood_pressure, Person.rest_blood_pressure, Person.rest_electro, Person.max_heart_rate,
+            # Person.exercice_angina)
+            ctx = {"pred_naive_sk": pred, 'accuracy_naive_sk': accuracy, 'precision_naive_sk': precision,
+                   'recall_naive_sk': recall, 'score_naive_sk': fscore, "fake_result_naive": fake_result_naive, "real_result_id3": real_result_id3}
 
-            return render(request, 'accounts/results.html',
-                          {"fake_result_naive": fake_result_naive,
-                           "real_result_naive": real_result_naive,
-                           "real_result_id3": real_result_id3
-                           })
+            return render(request, 'accounts/results.html', ctx)
         else:
             return render(request, 'accounts/patient/register.html', {'form': form})
