@@ -68,10 +68,11 @@ popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top
                          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                     aria-haspopup="true" aria-expanded="false">{% trans "Language" %} <span class="fa fa-angle-down"></span></a>
                        <ul class="dropdown-menu">
+{#                          <form action="{% url 'set_language' %}" method="post" id="language_form">{% csrf_token %}#}
                                 {% for language in languages %}
                                     {% if language.code != LANGUAGE_CODE %}
                                         <li class="lang-selector">
-                                            <a href="/{{ language.code }}{{ request.get_full_path|slice:'3:' }}"
+                                            <a href="/{{ language.code }}/{{request.get_full_path|slice:"4:"}}"
                                                class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}"
                                                lang="{{ language.code }}">
                                                 {{ language.name_local }}
@@ -79,6 +80,7 @@ popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top
                                         </li>
                                     {% endif %}
                                 {% endfor %}
+{#                          </form>#}
                             </ul>
                </li>
               </ul>
