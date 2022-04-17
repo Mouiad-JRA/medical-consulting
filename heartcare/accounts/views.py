@@ -151,22 +151,22 @@ class RegisterPersonView(CreateView):
         if form.is_valid():
             Person = form.save(commit=False)
             pred, accuracy, precision, recall, fscore = sklearn_algorithm(
-                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                os.path.abspath("heartcare/accounts/heart_disease_male.csv"), Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure,
                 Person.blood_sugar,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
             pred1, accuracy1, precision1, recall1, fscore1 = sklearn_algorithm_from_scratch(
-                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_handled_male.csv"),
+                os.path.abspath("heartcare/accounts/heart_disease_handled_male.csv"),
                 Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure,
                 Person.rest_blood_pressure,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
             pred2, accuracy2, precision2, recall2, fscore2 = id3_hard(
-                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                os.path.abspath("heartcare/accounts/heart_disease_male.csv"), Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
             pred3, accuracy3, precision3, recall3, fscore3 = id3(
-                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                os.path.abspath("heartcare/accounts/heart_disease_male.csv"), Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
             ctx = {"pred_naive_sk": round(pred, 4), 'accuracy_naive_sk': round(accuracy, 3)*100,
