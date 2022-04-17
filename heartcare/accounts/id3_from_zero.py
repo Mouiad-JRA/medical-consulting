@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_fscore_support as score
 
 
 class GadId3Classifier:
@@ -146,28 +148,28 @@ def id3_hard(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, re
     X = df.iloc[:, 0:7]
     y = df.iloc[:, -1]
 
-    if (chest_pain_type == 'asympt'):
+    if chest_pain_type == 'asympt':
         cpt = 0
-    elif (chest_pain_type == 'atyp_angina'):
+    elif chest_pain_type == 'atyp_angina':
         cpt = 1
-    elif (chest_pain_type == 'non_anginal'):
+    elif chest_pain_type == 'non_anginal':
         cpt = 2
 
-    if (blood_sugar == False):
+    if not blood_sugar:
         bs = 0
-    elif (blood_sugar):
+    elif blood_sugar:
         bs = 1
 
-    if (rest_electro == 'normal'):
+    if rest_electro == 'normal':
         re = 2
-    elif (rest_electro == 'left_vent_hyper'):
+    elif rest_electro == 'left_vent_hyper':
         re = 1
-    elif (rest_electro == 'st_t_wave_abnormality'):
+    elif rest_electro == 'st_t_wave_abnormality':
         re = 3
 
-    if (exercice_angina):
+    if exercice_angina:
         ea = 1
-    elif (exercice_angina == False):
+    elif not exercice_angina:
         ea = 0
 
     patient = [[age, cpt, rest_blood_pressure, bs, re, max_heart_rate, ea]]
@@ -185,5 +187,11 @@ def id3_hard(dataset, age, chest_pain_type, rest_blood_pressure, blood_sugar, re
                                        'max_heart_rate', 'exercice_angina'])
 
     y_pred = model.predict(f)
-
-    return y_pred[0]
+    yy_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, yy_pred)
+    precision, recall, fscore, support = score(y_test, yy_pred, average='macro')
+    print('Precision for id3 from zero : {}'.format(precision))
+    print('Recall for id3 from zero  : {}'.format(recall))
+    print('F-score for id3 from zero : {}'.format(fscore))
+    print('Accuracy for id3 from zero : {}'.format(accuracy))
+    return y_pred[0], accuracy, precision, recall, fscore

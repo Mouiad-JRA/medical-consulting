@@ -9,7 +9,8 @@ from django.views.generic import CreateView, FormView, RedirectView
 from .bayes import sklearn_algorithm
 from .bayes_hard import sklearn_algorithm_from_scratch
 from .forms import *
-from .id3_real import id3_hard
+from .id3_from_zero import id3_hard
+from .id3 import id3
 from .models import User
 
 
@@ -154,23 +155,33 @@ class RegisterPersonView(CreateView):
                 Person.chest_pain_type, Person.rest_blood_pressure,
                 Person.blood_sugar,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            fake_result_naive = sklearn_algorithm_from_scratch(
+            pred1, accuracy1, precision1, recall1, fscore1 = sklearn_algorithm_from_scratch(
                 os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_handled_male.csv"),
                 Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure,
                 Person.rest_blood_pressure,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            real_result_id3 = id3_hard(
+            pred2, accuracy2, precision2, recall2, fscore2 = id3_hard(
                 os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
                 Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
                 Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
-            # fake_result_id3 = sklearn_algorithm_from_scratch(os.path.abspath(
-            # "accounts/heart_disease_handled_male.csv"), Person.age, Person.chest_pain_type,
-            # Person.rest_blood_pressure, Person.rest_blood_pressure, Person.rest_electro, Person.max_heart_rate,
-            # Person.exercice_angina)
-            ctx = {"pred_naive_sk": pred, 'accuracy_naive_sk': accuracy, 'precision_naive_sk': precision,
-                   'recall_naive_sk': recall, 'score_naive_sk': fscore, "fake_result_naive": fake_result_naive, "real_result_id3": real_result_id3}
-
+            pred3, accuracy3, precision3, recall3, fscore3 = id3(
+                os.path.abspath("/home/momo/Desktop/SVU Master/heartcare/accounts/heart_disease_male.csv"), Person.age,
+                Person.chest_pain_type, Person.rest_blood_pressure, Person.blood_sugar,
+                Person.rest_electro, Person.max_heart_rate, Person.exercice_angina)
+            ctx = {"pred_naive_sk": round(pred, 4), 'accuracy_naive_sk': round(accuracy, 3)*100,
+                   'precision_naive_sk': round(precision, 4),
+                   'recall_naive_sk': round(recall, 4), 'score_naive_sk': round(fscore, 4),
+                   "pred_naive_fake": round(pred1, 4), 'accuracy_naive_fake': round(accuracy1, 2),
+                   'precision_naive_fake': round(precision1, 4),
+                   'recall_naive_fake': round(recall1, 4), 'score_naive_fake': round(fscore1, 4),
+                   "pred_id3_fake": round(pred2, 4), 'accuracy_id3_fake': round(accuracy2, 2)*100,
+                   'precision_id3_fake': round(precision2, 4),
+                   'recall_id3_fake': round(recall2, 4), 'score_id3_fake': round(fscore2, 4),
+                   "pred_id3": round(pred3, 4), 'accuracy_id3': round(accuracy3, 2)*100,
+                   'precision_id3': round(precision3, 4),
+                   'recall_id3': round(recall3, 4), 'score_id3': round(fscore3, 4),
+                   }
             return render(request, 'accounts/results.html', ctx)
         else:
             return render(request, 'accounts/patient/register.html', {'form': form})

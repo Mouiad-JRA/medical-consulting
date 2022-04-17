@@ -19,99 +19,172 @@
     <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
 
-    <style>
-        html, body, #container {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    {#    <style>#}
+    {#        html, body, #container {#}
+    {#            width: 100%;#}
+    {#            height: 100%;#}
+    {#            margin: 0;#}
+    {#            padding: 0;#}
+    {#        }#}
+    {#    </style>#}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-<div id="container" class="align-content-center"></div>
+
+<!--Table and divs that hold the pie charts-->
+<table class="columns">
+    <tr>
+        <td>
+            <div id="piechart_div" style="border: 1px solid #ccc"></div>
+        </td>
+        <td>
+            <div id="barchart_div" style="border: 1px solid #ccc"></div>
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <div id="piechart_div1" style="border: 1px solid #ccc"></div>
+        </td>
+        <td>
+            <div id="barchart_div1" style="border: 1px solid #ccc"></div>
+        </td>
+    </tr>
+<tr>      <td>
+            <div id="barchart_div2" style="border: 1px solid #ccc"></div>
+        </td></tr>
+</table>
+
+<h3> please take a doctor consulting on our site </h3>
+<a href="{% url 'accounts:login' %}">
+    <button type="login" name="take a consultation" style='alignment: center;'
+            class="btn btn-danger btn-md text-white">take a consultation now
+    </button>
+</a>
 
 
-<h1>Naive Bayes hard coded Algorithm Results</h1>
-{% if fake_result_naive == 0 %}
-    <h2>The result of Naive Bayes hard coded Algorithm is negative which mean that the person doesn't have any heart
-        issue </h2>
-{% elif fake_result_naive == 1 %}
-    <h1 style="color:#bf0311">Danger! Danger!</h1>
-    <h3>The result of Naive Bayes hard coded Algorithm is positive which mean that the person dose have a heart issue,
-        please take a doctor consulting on
-        our site </h3>
-{% endif %}
-<h1>Lets see the real Result For Naive Bayes Algorithm </h1>
-<h2>The Sklearn Naive Bayes Algorithm Results</h2>
-{% if real_result_naive == 0 %}
-    <h2>The result of Sklearn Naive Bayes Algorithm is negative which mean that the person doesn't have any heart
-        issue </h2>
-{% elif real_result_naive == 1 %}
-    <h1 style="color:#bf0311">Danger! Danger!</h1>
-    <h3>The result of Sklearn Naive Bayes Algorithm is positive which mean that the person dose have a heart issue,
-        please take a doctor consulting on
-        our site </h3>
-    <a href="{% url 'accounts:login' %}">
-        <button type="login" name="take a consultation" style='margin-right: 500px'
-                class="btn btn-danger btn-md text-white">take a consultation now
-        </button>
-    </a>
-{% endif %}
-
-{% if real_result_id3 == 0 %}
-    <h2>The result of ID3 Algorithm is negative which mean that the person doesn't have any heart issue </h2>
-{% elif real_result_id3 == 1 %}
-    <h1>Lets see the real Result For Naive Bayes Algorithm </h1>
-    <h1 style="color:#bf0311">Danger! Danger!</h1>
-    <h3>The result of ID3 Algorithm is is positive which mean that the person dose have a heart issue, please take a
-        doctor consulting on
-        our site </h3>
-    <a href="{% url 'accounts:login' %}">
-        <button type="login" name="take a consultation" style='margin-right: 500px'
-                class="btn btn-danger btn-md text-white">take a consultation now
-        </button>
-    </a>
-{% endif %}
 </body>
+
 <script>
-    anychart.onDocumentReady(function () {
 
-        // set the data
-        var data = [
+    google.charts.load('current', {'packages': ['corechart']});
 
-            {x: "Naive precision using sklearn  {{precision_naive_sk}}", value: {{precision_naive_sk}}},
-            {x: "Naive recall using sklearn  {{recall_naive_sk}} ", value: {{recall_naive_sk}}},
-            {x: "Naive F-score using sklearn {{score_naive_sk}} ", value: {{score_naive_sk}}},
-            {x: "Naive Accuracy using sklearn {{accuracy_naive_sk}} ", value: {{accuracy_naive_sk}}},
-        ];
+    // Draw the pie chart and bar chart when Charts is loaded.
+    google.charts.setOnLoadCallback(drawChart);
 
-        // create the chart
-        var chart = anychart.pie();
-        // set the chart title
-        chart.title("A chart showing the results of the Naive Bayes algorithm using Sklearn");
-        // add the data
-        chart.data(data);
-        // display the chart in the container
+    function drawChart() {
 
-        chart
-            .legend(false)
-            .innerRadius('35%')
-            .connectorLength('25%')
-            .startAngle(180)
-            .explode(25);
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+            ["precision :  {{precision_naive_sk}}", {{precision_naive_sk}}],
+            ["recall :  {{recall_naive_sk}} ", {{recall_naive_sk}}],
+            ["Accuracy : {{accuracy_naive_sk}} ", {{accuracy_naive_sk}}],
+            ["F-score : {{score_naive_sk}} ", {{score_naive_sk}}]
 
-        chart.labels()
-        .position('outside')
-        .offsetY(0)
-        .enabled(true)
-        .format('{%X}');
-        chart.padding().bottom(80);
+        ]);
 
-        chart.container('container');
-        chart.draw();
+        var piechart_options = {
+            title: 'A chart showing the results of the Naive Bayes algorithm using Sklearn',
+            width: 600,
+            height: 400
+        };
 
-    });
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Topping');
+        data1.addColumn('number', 'Slices');
+        data1.addRows([
+            ["precision : {{precision_naive_fake}}", {{precision_naive_fake}}],
+            ["Accuracy : {{accuracy_naive_fake}} ", {{accuracy_naive_fake}}],
+            ["recall : {{recall_naive_fake}} ", {{recall_naive_fake}}],
+            ["F-score : {{score_naive_fake}} ", {{score_naive_fake}}],
+
+        ]);
+
+        var barchart_options = {
+            title: 'A chart showing the results of the Naive Bayes algorithm From Scratch ',
+            width: 600,
+            height: 400
+        };
+        var barchart = new google.visualization.PieChart(document.getElementById('barchart_div'));
+        barchart.draw(data1, barchart_options);
+
+
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Topping');
+        data2.addColumn('number', 'Slices');
+        data2.addRows([
+            ["precision :  {{precision_id3}}", {{precision_id3}}],
+            ["recall :  {{recall_id3}} ", {{recall_id3}}],
+            ["F-score : {{score_id3}} ", {{score_id3}}],
+            ["Accuracy : {{accuracy_id3}} ", {{accuracy_id3}}]
+
+
+        ]);
+
+        var piechart_options1 = {
+            title: 'A chart showing the results of the ID# algorithm using DecisionTreeClassifier',
+            width: 600,
+            height: 400
+        };
+
+        var piechart1 = new google.visualization.PieChart(document.getElementById('piechart_div1'));
+        piechart1.draw(data2, piechart_options1);
+
+        var data3 = new google.visualization.DataTable();
+        data3.addColumn('string', 'Topping');
+        data3.addColumn('number', 'Slices');
+        data3.addRows([
+            ["Accuracy : {{accuracy_id3_fake}} ", {{accuracy_id3_fake}}],
+            ["precision : {{precision_id3_fake}}", {{precision_id3_fake}}],
+            ["recall : {{recall_id3_fake}} ", {{recall_id3_fake}}],
+            ["F-score : {{score_id3_fake}} ", {{score_id3_fake}}],
+
+        ]);
+
+        var barchart_options1 = {
+            title: 'A chart showing the results of the ID3 algorithm From Scratch ',
+            width: 600,
+            height: 400
+        };
+        var barchart1 = new google.visualization.PieChart(document.getElementById('barchart_div1'));
+        barchart1.draw(data3, barchart_options1);
+var data4 = new google.visualization.DataTable();
+        data4.addColumn('string', 'Topping');
+        data4.addColumn('number', 'Slices');
+        data4.addRows([
+            [{% if pred_naive_sk  %}"Naive Bayes using sklearn show that The person have a heart issue "
+            {% else %} "Naive Bayes using sklearn show that The person doesn't have a heart issue"
+
+            {% endif %} ,25 ],
+            [{% if pred_naive_fake  %} "Naive prediction from scratch show that The person have a heart issue "
+                 {% else %} "The person doesn't have a heart issue using Naive prediction from scratch"
+            {% endif %}, 25],
+            [{% if pred_id3  %}"ID3 prediction show that The person have a heart issue "
+             {% else %} "The person doesn't have a heart issue using ID3 "
+            {% endif %} , 25],
+            [{% if pred_id3_fake  %} "ID3 prediction from scratch :show that The person have a heart issue"
+            {% else %} "The person doesn't have a heart issue using ID3 from scratch "
+            {% endif %} , 25],
+
+        ]);
+
+        var barchart_options2 = {
+            title: 'A chart showing the prediction results for all the algorithms, Percentages here exists only to express the presence of four codes were compared between ',
+            width: 900,
+            height: 600,
+            center: true
+        };
+        var barchart22 = new google.visualization.PieChart(document.getElementById('barchart_div2'));
+        barchart22.draw(data4, barchart_options2);
+
+    }
+
 
 </script>
+
 </html>
