@@ -79,10 +79,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'heartcare.wsgi.application'
 
 from django.utils.translation import gettext_lazy as _
-
+gettext = lambda s: s
 LANGUAGES = [
-    ('en', _('English')),
-    ('ar', _('Arabic')),
+    ('en', gettext('English')),
+    ('ar', gettext('Arabic')),
 ]
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
