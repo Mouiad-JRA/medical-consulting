@@ -92,9 +92,9 @@ class LoginView(FormView):
     }
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:
+        if request.user.is_authenticated:
             return HttpResponseRedirect(self.get_success_url())
-        return super().dispatch(self.request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         if 'next' in self.request.GET and self.request.GET['next'] != '':
@@ -112,6 +112,11 @@ class LoginView(FormView):
     def form_invalid(self, form):
         """If the form is invalid, render the invalid form."""
         return self.render_to_response(self.get_context_data(form=form))
+
+    def get_form_kwargs(self):
+        kwargs = super(LoginView, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
 
 
 class LogoutView(RedirectView):

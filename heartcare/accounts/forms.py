@@ -261,6 +261,7 @@ class UserLoginForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request")
         super().__init__(*args, **kwargs)
         self.user = None
         self.fields['email'].label = _("Email")
@@ -272,7 +273,7 @@ class UserLoginForm(forms.Form):
         password = self.cleaned_data.get("password")
 
         if email and password:
-            self.user = authenticate(email=email, password=password)
+            self.user = authenticate(self.request, username=email, password=password)
 
             if self.user is None:
                 raise forms.ValidationError("User Does Not Exist.")
