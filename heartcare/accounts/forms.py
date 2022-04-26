@@ -54,13 +54,13 @@ class ConsultationForm(forms.ModelForm):
 class PatientRegistrationForm(UserCreationForm):
     captcha = CaptchaField()
     medical_history = forms.CharField(max_length=255,
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={"class": "form-control", "placeholder": "medical history"}
         ),
         error_messages={"required": "Please fill in the details."},
     )
     consultation_text = forms.CharField(max_length=255,
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={"class": "form-control", "placeholder": "consultation text"}
         ),
         error_messages={"required": "Please fill in the details."},
