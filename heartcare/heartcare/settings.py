@@ -156,4 +156,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mouiad.alilo@gmail.com'
 EMAIL_HOST_PASSWORD = 'momoj2mfhana12'
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
