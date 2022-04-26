@@ -145,8 +145,6 @@ class RegisterPersonView(CreateView):
     }
 
     def dispatch(self, request, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return HttpResponseRedirect(self.get_success_url())
         return super().dispatch(self.request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
