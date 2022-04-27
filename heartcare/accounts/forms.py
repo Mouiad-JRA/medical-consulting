@@ -10,7 +10,8 @@ from .models import User, Consultation, Person
 class ConsultationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(ConsultationForm, self).__init__(*args, **kwargs)
+        self.request = kwargs.pop("request")
+        super().__init__(*args, **kwargs)
         self.fields['consultation_text'].label = _("consultation text")
         self.fields['medical_history'].label = _("medical history")
         self.fields['medical_history'].widget.attrs.update(
@@ -25,46 +26,55 @@ class ConsultationForm(forms.ModelForm):
         )
 
     class Meta:
-        model = Consultation
-        fields = ['medical_history', 'consultation_text', 'reply']
-        error_messages = {
-            'medical_history': {
-                'required': 'medical history is required'
-            },
-            'consultation_text': {
-                'required': 'consultation text is required'
+            model = Consultation
+            fields = ['medical_history', 'consultation_text', 'reply']
+            error_messages = {
+                'medical_history': {
+                    'required': 'medical history is required'
+                },
+                'consultation_text': {
+                    'required': 'consultation text is required'
+                }
             }
-        }
+            exclude = ('reply',)
 
-        exclude = ('reply',)
+    def save(self, commit=True):
+        consultation = super(ConsultationForm, self).save(commit=False)
+        user = User.objects.get(email=self.request.user.email)
 
-        def clean_medical_history(self):
-            medical_history = self.cleaned_data.get('medical_history')
-            if not medical_history:
-                raise forms.ValidationError("medical history is required")
-            return medical_history
+        if commit:
+            consultation.save()
+        user.consultation = consultation
+        user.save()
+        return consultation
 
-        def clean_consultation_text(self):
-            consultation_text = self.cleaned_data.get('consultation_text')
-            if not consultation_text:
-                raise forms.ValidationError("consultation text is required")
-            return consultation_text
+    def clean_medical_history(self):
+        medical_history = self.cleaned_data.get('medical_history')
+        if not medical_history:
+            raise forms.ValidationError("medical history is required")
+        return medical_history
+
+    def clean_consultation_text(self):
+        consultation_text = self.cleaned_data.get('consultation_text')
+        if not consultation_text:
+            raise forms.ValidationError("consultation text is required")
+        return consultation_text
 
 
 class PatientRegistrationForm(UserCreationForm):
     captcha = CaptchaField()
     medical_history = forms.CharField(max_length=255,
-        widget=forms.Textarea(
-            attrs={"class": "form-control", "placeholder": "medical history"}
-        ),
-        error_messages={"required": "Please fill in the details."},
-    )
+                                      widget=forms.Textarea(
+                                          attrs={"class": "form-control", "placeholder": "medical history"}
+                                      ),
+                                      error_messages={"required": "Please fill in the details."},
+                                      )
     consultation_text = forms.CharField(max_length=255,
-        widget=forms.Textarea(
-            attrs={"class": "form-control", "placeholder": "consultation text"}
-        ),
-        error_messages={"required": "Please fill in the details."},
-    )
+                                        widget=forms.Textarea(
+                                            attrs={"class": "form-control", "placeholder": "consultation text"}
+                                        ),
+                                        error_messages={"required": "Please fill in the details."},
+                                        )
 
     # gender = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=GENDER_CHOICES)
 
@@ -398,8 +408,9 @@ class PersonForm(forms.ModelForm):
     class Meta:
         model = Person
 
-        fields = ['age', 'exercice_angina', 'blood_sugar', 'max_heart_rate', 'rest_blood_pressure', 'rest_electro', 'chest_pain_type',
-                 ]
+        fields = ['age', 'exercice_angina', 'blood_sugar', 'max_heart_rate', 'rest_blood_pressure', 'rest_electro',
+                  'chest_pain_type',
+                  ]
         error_messages = {
             'age': {
                 'required': 'age is required'
@@ -411,5 +422,3 @@ class PersonForm(forms.ModelForm):
         if commit:
             person.save()
         return person
-
-

@@ -108,6 +108,7 @@ class ContactView(TemplateView):
         return redirect('contact')
 
 
+
 class consultationView(CreateView):
     form_class = ConsultationForm
     template_name = "hospital/consultation.html"
@@ -123,3 +124,8 @@ class consultationView(CreateView):
     #
     def get_success_url(self):
         return reverse('accounts:login')
+
+    def get_form_kwargs(self):
+        kwargs = super(consultationView, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
