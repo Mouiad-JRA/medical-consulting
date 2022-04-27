@@ -100,13 +100,11 @@ popupWindow = window.open(url,'popUpWindow','height=1000,width=1000,left=100,top
 
                     {#                <li><a class="appoint" href="{% url 'appointment:doctor-appointment-create' %}">Appointment</a></li>#}
                     <li><a class="appoint" href="{% url 'accounts:login' %}"> {% trans "Login" %} </a></li>
-                    <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
-                                                                        alt=""></a></li>
+
 
                 {% else %}
                                     <li><a class="appoint" href="{% url 'accounts:logout' %}"> {% trans "Logout" %} </a></li>
-                    <li><a id="menu-toggle" href="#" class="toggle"><img src="{% static 'heartcare/images/bars.png' %}"
-                                                                        alt=""></a></li>
+
                  {% endif %}
                 </ul>
             </div>
